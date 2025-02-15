@@ -1,6 +1,27 @@
 header {
     background-color: rgb(37, 205, 205);
-    text-align: center;
-    color: rgb(203, 153, 87);
+    color: rgb(171, 129, 70);
     font-family: 'Courier New', Courier, monospace;
+    padding: 2%;
+}
+
+#Logo {
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+    position: absolute;
+}
+
+body {
+    margin: 0;
+}
+
+.title {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    #title-caption {
+        visibility: hidden;
+    }
 }
