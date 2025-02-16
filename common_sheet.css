@@ -193,3 +193,64 @@ body {
     color: white;
     text-align: left;
     }
+
+    .HowItWorks{
+        background-color: #fff;
+        padding: 50px 20px;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .HowItWorks h1{
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    .steps{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        gap: 50px;
+    }
+    
+    .step{    
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .step-number{
+        width: 40px;
+        height: 40px;
+        background-color: rgb(33, 111, 163);
+        color: white;
+        display: flex;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #num2{
+        background-color: rgb(119, 181, 217);
+    }
+    
+    #num3{
+        background-color: rgb(177, 213, 224);
+    }
+    
+    .textStep{
+        font-size: 1rem;
+        color: #555;
+        max-width: 200px;
+    }
+    
+    @media (max-width: 768px) {
+        .steps {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+    
