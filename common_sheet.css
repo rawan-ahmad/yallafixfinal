@@ -149,3 +149,47 @@ body {
     line-height: 1.5;
     margin-top: 5px;
   }
+  
+  footer {
+    background-color: #5d99eb;
+    height: 150px;
+    color: rgb(255, 255, 255);
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    }
+    
+    footer a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    }
+    
+    footer a:hover {
+    text-decoration: underline;
+    background-color: rgba(196, 234, 255, 0.811);
+    }
+    
+    #Navigation a{
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    text-align: left;
+    }
+    
+    #Services a{
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    text-align: left;
+    }
+    
+    #Quick a{
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    text-align: left;
+    }
