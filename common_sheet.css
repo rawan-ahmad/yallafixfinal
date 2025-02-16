@@ -1,27 +1,64 @@
 header {
-    background-color: rgb(37, 205, 205);
-    color: rgb(171, 129, 70);
+    background-color: rgb(39, 117, 151);
+    color: rgb(234, 234, 242);
     font-family: 'Courier New', Courier, monospace;
     padding: 2%;
+    display: flex;
+    justify-content: space-between;
 }
 
-#Logo {
+#title {
+    text-align: center;
+}
+
+#SignUp,
+#betechnician {
+    text-align: center;
+    font-size: large;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: rgb(204, 206, 226);
+    width: 200px;
+}
+
+#SignUp:hover,
+#betechnician:hover {
+    background-color: rgb(222, 184, 135); 
+}
+
+#SignUp a,
+#betechnician a {
+    color: rgb(22, 21, 20);
+    text-decoration: none;
+}
+
+#logo-pic {
     border-radius: 50%;
     height: 110px;
     width: 110px;
-    position: absolute;
-}
-
-body {
-    margin: 0;
-}
-
-.title {
-    text-align: center;
 }
 
 @media screen and (max-width: 600px) {
     #title-caption {
         visibility: hidden;
     }
+}
+
+nav {
+    background-color: rgb(167, 250, 250);
+    padding: 2px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: large;
+}
+
+nav a {
+    color: blueviolet;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    background-color: chartreuse;
 }
