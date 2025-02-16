@@ -1,7 +1,9 @@
 header {
-    background-color: rgb(39, 117, 151);
-    color: rgb(234, 234, 242);
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #5d99eb;
+    color: rgb(255, 255, 255);
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
     padding: 2%;
     display: flex;
     justify-content: space-between;
@@ -46,15 +48,18 @@ header {
 }
 
 nav {
-    background-color: rgb(167, 250, 250);
+    font-family: "Quicksand", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+    background-color: #004aad;
     padding: 2px;
     display: flex;
     justify-content: space-evenly;
-    font-size: large;
 }
 
 nav a {
-    color: blueviolet;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
