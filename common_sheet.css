@@ -1,5 +1,9 @@
 header {
     background-color: #5d99eb;
+    background-image: url('background.png');
+    background-size: contain;
+    background-position: center;
+    height: 150px;
     color: rgb(255, 255, 255);
     font-family: "DM Serif Text", serif;
     font-weight: 400;
@@ -18,27 +22,26 @@ header {
     text-align: center;
     font-size: large;
     padding: 3px;
-    border: 1px solid black;
+    border: 1px solid #004aad;
     border-radius: 6px;
-    background-color: rgb(204, 206, 226);
+    background-color: #004aad;
     width: 200px;
 }
 
 #SignUp:hover,
 #betechnician:hover {
-    background-color: rgb(222, 184, 135); 
+    background-color: #ed5a5ae7; 
 }
 
 #SignUp a,
 #betechnician a {
-    color: rgb(22, 21, 20);
+    color: #ffffff;
     text-decoration: none;
 }
 
 #logo-pic {
-    border-radius: 50%;
-    height: 110px;
-    width: 110px;
+    height: 75px;
+    width: 95px;
 }
 
 @media screen and (max-width: 600px) {
@@ -65,5 +68,5 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
-    background-color: chartreuse;
+    background-color: rgba(196, 234, 255, 0.811);
 }
