@@ -132,13 +132,11 @@ body {
 
 .review {
     flex: 0 0 300px;
-    /* Fixed width */
     background: #fff;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     scroll-snap-align: start;
-    /* Snap effect */
     border-radius: 10px;
 }
 
@@ -270,4 +268,19 @@ footer a:hover {
         flex-direction: row;
         align-items: center;
     }
+}
+
+.loc-pic {
+    height: 12%;
+    width: 10%;
+}
+
+.phone-pic {
+    height: 13%;
+    width: 13%;
+}
+
+.mail-pic {
+    height: 10%;
+    width: 13%;
 }
