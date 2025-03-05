@@ -10,203 +10,226 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Newsreader:opsz,wght@6..72,700&display=swap"
         rel="stylesheet">
-    <title>Home</title>
+    <title>HomePage</title>
+
+    <style>
+        #reviews_section {
+            background: #f4f4f4;
+            padding: 4.6%;
+            padding-top: 2%;
+        }
+
+        #reviews_container {
+            margin-top: 4%;
+            /* margin-bottom: 4%; */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .review {
+            width: 300px;
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgb(115, 115, 115);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 18px;
+        }
+
+        .reviewer {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .review_text {
+            color: #555;
+            line-height: 1.5;
+            margin-top: 5px;
+        }
+    </style>
+
+    <style>
+        .HowItWorks {
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: rgb(33, 111, 163);
+            color: white;
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .textStep {
+            font-size: 1rem;
+            color: #555;
+            max-width: 200px;
+        }
+    </style>
+
 </head>
 
-<body style="margin: 0;">
-
+<body>
     <header>
-
-        <div id="logo">
-            <a href="homepage.html">
-                <img id="logo-pic" src="images/Logo.png"
-                    alt="Logo">
-            </a>
-        </div>
-
-        <div id="title" style="margin-left: 9%; margin-top: 7.5%;">
-            <h1>Your tool for booking a technician!</h1>
-        </div>
-
-
-        <div id="buttons">
-            <div id="SignUp">
-                <a href="signup.html">Sign Up</a>
-            </div>
-            <br><br>
-            <div id="betechnician">
-                <a href="">Become a Technician</a>
+        <div id="header_section1">
+            <img class="logo-pic" src="images/Logo.png" alt="Logo">
+            <img src="images/background.png" alt="image" id="headerimage">
+            <div>
+                <div id="signup">
+                    <a href="signup.html">Sign Up</a>
+                </div>
+                <br>
+                <div id="betechnician">
+                    <a href="">Become a Technician</a>
+                </div>
             </div>
         </div>
 
-
+        <h2 id="header_title">Your tool for booking a technician!</h2>
     </header>
 
     <nav>
-        <a href="homepage.html" target="_blank">Services</a>
-
-        <a href="homepage.html" target="_blank">About us</a>
-
-        <a href="homepage.html" target="_blank">Contact us</a>
+        <a href="homepage.html">Services</a>
+        <a href="homepage.html">About us</a>
+        <a href="homepage.html">Contact us</a>
     </nav>
 
     <main>
         <div class="HowItWorks">
-            <h1>How it works</h1>
+            <h1 style="margin-bottom: 60px;">How it works</h1>
             <div class="steps">
                 <div class="step">
                     <div class="step-number" id="num1">1</div>
                     <div class="textStep">Select the service of your choice.</div>
                 </div>
                 <div class="step">
-                    <div class="step-number" id="num2">2</div>
+                    <div class="step-number" style="background-color: rgb(119, 181, 217);">2</div>
                     <div class="textStep">Choose your preferred salary range and location.</div>
                 </div>
                 <div class="step">
-                    <div class="step-number" id="num3">3</div>
+                    <div class="step-number" style="background-color: rgb(177, 213, 224);">3</div>
                     <div class="textStep">Get in touch with a technician.</div>
                 </div>
             </div>
         </div>
 
-        <div class="services_container">
-            <div class="service_box">
-                <img src="images/electrician.jpg"
-                    alt="Image 1">
-                <h3>Electricty Trouble</h3>
-            </div>
-            <div class="service_box">
-                <img src="images/plumber.jpg" alt="Image 2">
-                <h3>Plumbing Problems</h3>
-            </div>
-            <div class="service_box">
-                <img src="images/appliances.jpg" alt="Image 3">
-                <h3>Appliances Repair</h3>
-            </div>
-            <div class="service_box">
-                <img src="images/furniture.jpg" alt="Image 4">
-                <h3>Furniture Repair</h3>
-            </div>
-            <div class="service_box">
-                <img src="images/car.jpg" alt="Image 5">
-                <h3>Vehicle Maintenance</h3>
-            </div>
-            <div class="service_box">
-                <img src="images/wifi.jpg" alt="Image 6">
-                <h3>Wi-fi Issues</h3>
+        <div id="reviews_section">
+            <h1 style="text-align: center;"><b>Check the Reviews of our Customers</b></h1>
+
+            <div id="reviews_container">
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <div class="reviewer">Chris</div>
+                    <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                        really Love this website.</div>
+                </div>
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <div class="reviewer">Ahmad</div>
+                    <div class="review_text">Job completed perfectly! I highly recommend this website.Job completed
+                        perfectly! I highly recommend this website.</div>
+                </div>
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <div class="reviewer">Rawan</div>
+                    <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                        really Love this website.</div>
+                </div>
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <div class="reviewer">Mahmoud</div>
+                    <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                        really Love this website.</div>
+                </div>
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <div class="reviewer">Tala</div>
+                    <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                        really Love this website.</div>
+                </div>
+                <div class="review">
+                    <div class="stars">★★★★★</div>
+                    <div class="reviewer">Tala</div>
+                    <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                        really Love this website.</div>
+                </div>
             </div>
         </div>
-
-        <div class="review-header">
-            <p style="text-align: left;">
-            <h1><b>Check the Reviews of our Customers</b></h1>
-        </div>
-
-        <div class="container">
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="name">Chris</div>
-                <div class="text">Highly recommended!!! I really Love this website.</div>
-            </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="name">Ahmad</div>
-                <div class="text">Job completed perfectly! I highly recommend this website.</div>
-            </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="name">Rawan</div>
-                <div class="text">Highly recommended!!! I really Love this website.</div>
-            </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="name">Mahmoud</div>
-                <div class="text">Highly recommended!!! I really Love this website.</div>
-            </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="name">Tala</div>
-                <div class="text">Highly recommended!!! I really Love this website.</div>
-            </div>
-        </div>
-
     </main>
 
     <footer>
-
-        <div id="logo">
-            <a href="homepage.html">
-                <img src="images/Logo.png" alt="Logo"
-                    id="logo-pic">
-            </a>
+        <div id="footer_upper">
+            <div>
+                <img class="logo-pic" src="images/Logo.png" alt="Logo">
+                <div id="pics">
+                    <a href="https://www.facebook.com/">
+                        <img src="images/location.png">
+                    </a>
+                    <a href="https://www.facebook.com/">
+                        <img src="images/phone.png">
+                    </a>
+                    <a href="https://www.facebook.com/">
+                        <img src="images/email.png">
+                    </a>
+                    <a href="https://www.facebook.com/">
+                        <img src="images/facebook.png">
+                    </a>
+                    <a href="https://www.x.com/">
+                        <img src="images/twitter.png">
+                    </a>
+                    <a href="https://www.youtube.com">
+                        <img src="images/youtube.png">
+                    </a>
+                </div>
+            </div>
+            <div id="footer_links">
+                <div>
+                    <h2>Navigation</h2>
+                    <a href="homepage.html">Home</a>
+                    <a href="homepage.html">About Us</a>
+                    <a href="homepage.html">Services</a>
+                </div>
+                <div>
+                    <h2>Quick Link</h2>
+                    <a href="homepage.html">Contact Us</a>
+                    <a href="homepage.html">Reviews</a>
+                    <a href="homepage.html">FAQs</a>
+                </div>
+            </div>
         </div>
 
-
-        <div id="Navigation" style="font-size: xx-small; line-height: 0.5; padding-left: 5%;">
-            <h2 style="line-height: 2;">Navigation</h2>
-            <a href="homepage.html" target="_blank">Home</a>
-
-            <a href="homepage.html" target="_blank">Pages</a>
-
-            <a href="homepage.html" target="_blank">About Us</a>
-
-            <a href="homepage.html" target="_blank">Services</a>
-        </div>
-
-        <div id="Services" style="font-size: xx-small; line-height: 0.5;">
-            <h2 style="line-height: 2;">Services</h2>
-            <a href="homepage.html" target="_blank">Home</a>
-
-            <a href="homepage.html" target="_blank">Contact</a>
-
-            <a href="homepage.html" target="_blank">Blog</a>
-
-            <a href="homepage.html" target="_blank">404</a>
-        </div>
-
-        <div id="Quick" style="font-size: xx-small; line-height: 0.5;">
-            <h2 style="line-height: 2;">Quick Link</h2>
-            <a href="homepage.html" target="_blank">Contact Us</a>
-
-            <a href="homepage.html" target="_blank">Reviews</a>
-
-            <a href="homepage.html" target="_blank">FAQs</a>
-        </div>
-
-        <div id="contact-info" style="margin-left: 4%; margin-top: 1.5%;">
-            <img src="images/location.png" class="loc-pic"> AUB
-            Beirut, Lebanon
-            <h4 style="line-height: 0.5;"> </h4>
-            <img src="images/phone.png" class="phone-pic"> +961
-            81 123 456
-            <h4 style="line-height: 0.5;"> </h4>
-            <img src="images/email.png" class="mail-pic">
-            yallafix@gmail.com
-        </div>
-
-        <div id="socials" style="margin-left: 5%; margin-top: 5%;">
-            <a href="https://www.facebook.com/">
-                <img src="images/facebook.png" alt="FaceBook"
-                    id="fb-pic" height="20px" width="20px">
-            </a>
-            <a href="https://www.x.com/">
-                <img src="images/twitter.png" alt="Twitter"
-                    id="x-pic" height="20px" width="20px">
-            </a>
-            <a href="https://www.youtube.com">
-                <img src="images/youtube.png" alt="Youtube"
-                    id="yt-pic" height="20px" width="25px">
-            </a>
-        </div>
-
-        <div style="margin-top: 11%;">
+        <div id="footer_lower">
             <h4>@ 2025 YallaFix. All Rights Reserved.</h4>
         </div>
-
-
     </footer>
-
-
 </body>
 
 </html>
