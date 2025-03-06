@@ -1,5 +1,49 @@
+/* General styling */
+:root {
+    --default-font: "Chakra Petch", serif;
+    --heading-font: "Arsenal SC", serif;
+    --nav-font: "Gruppo", serif;
+}
+
+
+:root {
+    --background-color: #ffffff;
+    --default-color: #56a2ff;
+    --heading-color: #000b61;
+    --accent-color: #0a189b;
+    --surface-color: #ffffff;
+    --contrast-color: #ffffff;
+}
+
+:root {
+    --nav-color: #212529;
+    --nav-hover-color: #89a4f3;
+    --nav-mobile-background-color: #ffffff;
+    --nav-dropdown-background-color: #ffffff;
+    --nav-dropdown-color: #212529;
+    --nav-dropdown-hover-color: #97bafc;
+}
+
+.light-background {
+    --background-color: #9ecbff3d;
+    --surface-color: #ffffff;
+}
+
+.dark-background {
+    --background-color: #060606;
+    --default-color: #ffffff;
+    --heading-color: #ffffff;
+    --surface-color: #252525;
+    --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--default-font);
     margin: 0;
 }
 
@@ -14,9 +58,9 @@ a {
 }
 
 header {
-    background-color: #5d99eb;
+    background-color: var(--default-color);
     color: rgb(255, 255, 255);
-    font-family: "DM Serif Text", serif;
+    font-family: var(--heading-font);
     padding: 1px;
 }
 
@@ -39,9 +83,9 @@ header {
     text-align: center;
     font-size: large;
     padding: 3px;
-    border: 1px solid #004aad;
+    border: 1px solid var(--heading-color);
     border-radius: 6px;
-    background-color: #004aad;
+    background-color: var(--heading-color);
 }
 
 #signup:hover,
@@ -53,14 +97,14 @@ nav a:hover {
 nav {
     font-family: "Quicksand", serif;
     font-size: large;
-    background-color: #004aad;
+    background-color:var(--heading-color);
     padding: 10px;
     display: flex;
     justify-content: space-evenly;
 }
 
 footer {
-    background-color: #5d99eb;
+    background-color: var(--default-color);
     color: rgb(255, 255, 255);
     font-family: "DM Serif Text", serif;
     padding: 2%;
