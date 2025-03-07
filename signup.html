@@ -4,12 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common_sheet.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Newsreader:opsz,wght@6..72,700&display=swap"
+        rel="stylesheet">
+
     <title>Sign Up Form</title>
+
     <style>
         body {
-            font-family: "DM Serif Text", serif;
             background-color: #f4f4f4;
-            background-image: url('images/signupBackground.png');
             background-size: contain;
             background-position: center;
             display: flex;
@@ -19,26 +27,9 @@
             margin: 0;
         }
 
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
         h2 {
             margin-bottom: 20px;
             text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
         }
 
         input {
@@ -47,21 +38,6 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #5d99eb;
-            font-family: "DM Serif Text", serif;
-            border: none;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #a8ccff;
         }
 
         #message {
@@ -104,27 +80,85 @@
             width: 100%;
             background-color: green;
         }
+
+        .signup {
+            margin-top: 10%;
+            text-decoration-color: #10066b;
+            background-color: #97bffc4d;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.094);
+            text-align: center;
+            margin-bottom: 10%;
+        }
+
+        .button-format {
+            background: linear-gradient(135deg, #10066b, #0e178b);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-format:hover {
+            background: #5662ff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-details .help-box {
+            background-color: var(--accent-color);
+            color: var(--contrast-color);
+            margin-top: 30px;
+            padding: 30px 15px;
+        }
+
+        .service-details .help-box .help-icon {
+            font-size: 48px;
+        }
+
+        .service-details .help-box h4,
+        .service-details .help-box a {
+            color: var(--contrast-color);
+        }
     </style>
+
 </head>
 
 <body>
 
-    <div class="container">
+
+    <section class="signup">
+
         <h2>Sign Up Form</h2>
         <form id="signupForm">
-            <div class="form-group">
-                <label for="phonenumber">Phone number</label>
-                <input type="text" id="phonenumber" name="phonenumber" required>
+
+            <div class="form-group" style="margin-top: 10%;">
+                <input type="phonenumber" class="form-control" placeholder="Phone Number" required>
             </div>
-            <div class="form-group">
-                <label for="confirmationcode">Confirmation code</label>
-                <input type="password" id="confirmationcode" name="confirmationcode" required>
-                <span id="confirmationcodeError" class="error"></span>
+
+            <div style="margin-top: 10%;">
+                <button class="button-format" type="submit">Send Code</button>
             </div>
-            <button type="submit">Sign up</button>
+
+            <div class="form-group" style="margin-top: 10%;">
+                <input type="confirmationcode" class="form-control" placeholder="Confirmation Code" required>
+            </div>
+
+            <div style="margin-top: 10%;">
+                <button class="button-format" type="submit">Sign up</button>
+            </div>
+
         </form>
         <p id="message"></p>
-    </div>
+
+        </div>
+
+    </section>
+
 
     <!--<script>
         document.getElementById('signupForm').addEventListener('submit', function (event) {
@@ -195,6 +229,30 @@
             return 'medium';
         }
     </script> -->
+    <section id="service-details" class="service-details section">
+
+        <div class="container">
+
+            <div class="row gy-5">
+
+                <div class="col">
+
+                    <div class="help-box d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-headset help-icon"></i>
+                        <h4>Have a Question?</h4>
+                        <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+961
+                                81 123 456</span></p>
+                        <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a
+                                href="mailto:contact@example.com">yallafix@gmail.com</a></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </body>
 
