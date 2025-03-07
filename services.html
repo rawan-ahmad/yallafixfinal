@@ -9,63 +9,85 @@
 </head>
 
 <style>
-    #services_section {
-        text-align: center;
-        padding: 40px;
-        background: #f4f4f4;
+
+    .wrapper {
+        display: flex;
+        justify-content: center; /* Center content when there's space, it is not centering...for some reason*/
+        width: 100%;
     }
 
-    #services_section h1 {
-        text-align: left;
-        font-size: 28px;
+    .scroll-container {
+        display: inline-block;
+        /*display: flex;*/ 
+        /*justify-content: center;*/ 
+        width: 90%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        margin: auto;
+    }
+    .category {
+        display: inline-block;
+        text-align: center;
+        margin-right: 50px;
+    }
+
+    .image-wrapper {
+        display: inline-block;
+        padding: 10px;
+        border-radius: 40%;
+        transition: background-color 0.3s;
+    }
+
+    img {
+        width: 70px; /* Adjust size as needed */
+        height: auto;
+    }
+
+    .category:hover {
+        color: rgb(53, 188, 238);
         font-weight: bold;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    #service_buttons {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .service_button {
-        background: white;
-        border: none;
-        padding: 15px;
-        width: 160px;
-        height: 120px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 16px;
+        text-decoration: underline;
         cursor: pointer;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
 
-    .service_button:hover {
-        background: #ed5a5a;
-        color: white;
-        box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+    .category:hover .image-wrapper {
+        background-color: rgb(53, 188, 238);
     }
 
-    .service_button.selected {
-        background: #004aad;
-        color: white;
-    }
-
-    .icon_wrapper {
-        margin-bottom: 10px;
-    }
-
-    label {
+    .category.active {
+        color: rgb(240, 104, 255);
         font-weight: bold;
+        text-decoration: underline;
     }
+
+    .category.active .image-wrapper {
+        background-color: rgb(240, 104, 255);
+    }
+
+    .specific_services {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        display: none;
+    }
+    .topic {
+        background-color: lightblue;
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: 2px solid darkblue;
+        white-space: nowrap;
+    }
+
+    .topic:hover {
+        background-color: darkblue;
+        color: white;
+        cursor: pointer;
+    }
+
+
 </style>
 
 <body>
@@ -95,78 +117,117 @@
     </nav>
 
     <main>
-
-        <div id="services_section">
-            <h1>Our Services</h1>
-            <div id="service_buttons">
-                <button class="service_button selected">
-                    <div class="icon_wrapper">
-                        <svg fill="none" height="50" width="60" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.9 5.27C25.85 -1.46 32.17 -0.34 34.46 1.06C39.91 1.06 51.45 1.91 54.05 5.27C57.29 9.48 55.35 21.06 58.59 25.87C61.83 30.68 56.25 38.49 44.45 46.46C32.65 54.43 13.84 46.46 9.82 46.46C5.8 46.46 1.51 40.15 0.61 32.18C-0.3 24.21 4.76 22.11 9.82 21.06C14.88 20.00 10.21 13.69 18.9 5.27Z"
-                                fill="rgba(186, 231, 255, 0.5)"></path>
-                        </svg>
-                    </div>
-                    <label>Assembly</label>
-                </button>
-
-                <button class="service_button">
-                    <div class="icon_wrapper">
-                        <svg fill="none" height="50" width="60" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.9 5.27C25.85 -1.46 32.17 -0.34 34.46 1.06C39.91 1.06 51.45 1.91 54.05 5.27C57.29 9.48 55.35 21.06 58.59 25.87C61.83 30.68 56.25 38.49 44.45 46.46C32.65 54.43 13.84 46.46 9.82 46.46C5.8 46.46 1.51 40.15 0.61 32.18C-0.3 24.21 4.76 22.11 9.82 21.06C14.88 20.00 10.21 13.69 18.9 5.27Z">
-                            </path>
-                        </svg>
-                    </div>
-                    <label>Mounting</label>
-                </button>
-
-                <button class="service_button">
-                    <div class="icon_wrapper">
-                        <svg fill="none" height="50" width="60" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.9 5.27C25.85 -1.46 32.17 -0.34 34.46 1.06C39.91 1.06 51.45 1.91 54.05 5.27C57.29 9.48 55.35 21.06 58.59 25.87C61.83 30.68 56.25 38.49 44.45 46.46C32.65 54.43 13.84 46.46 9.82 46.46C5.8 46.46 1.51 40.15 0.61 32.18C-0.3 24.21 4.76 22.11 9.82 21.06C14.88 20.00 10.21 13.69 18.9 5.27Z">
-                            </path>
-                        </svg>
-                    </div>
-                    <label>Cleaning</label>
-                </button>
-
-                <button class="service_button">
-                    <div class="icon_wrapper">
-                        <svg fill="none" height="50" width="60" viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.9 5.27C25.85 -1.46 32.17 -0.34 34.46 1.06C39.91 1.06 51.45 1.91 54.05 5.27C57.29 9.48 55.35 21.06 58.59 25.87C61.83 30.68 56.25 38.49 44.45 46.46C32.65 54.43 13.84 46.46 9.82 46.46C5.8 46.46 1.51 40.15 0.61 32.18C-0.3 24.21 4.76 22.11 9.82 21.06C14.88 20.00 10.21 13.69 18.9 5.27Z">
-                            </path>
-                        </svg>
-                    </div>
-                    <label>Home Repairs</label>
-                </button>
+        <div class = "container-wrapper"> <!--added only to try and center content-->
+        <div class="scroll-container">
+            <div class="category" data-category = "appliances">
+                <div class="image-wrapper">
+                    <img src="images/Appliances.PNG" alt="Image 1">
+                </div>
+                <h3>Appliances</h3>
+            </div>
+            <div class="category" data-category = "furniture">
+                <div class="image-wrapper">
+                    <img src="images/Furniture.PNG" alt="Image 2">
+                </div>
+                <h3>Furniture</h3>
+            </div>
+            <div class="category" data-category = "electrical">
+                <div class="image-wrapper">
+                    <img src="images/Electrical.PNG" alt="Image 3">
+                </div>
+                <h3>Electricty</h3>
+            </div>
+            <div class="category" data-category = "plumbing">
+                <div class="image-wrapper">
+                    <img src="images/Plumping.PNG" alt="Image 4">
+                </div>
+                <h3>Plumbing</h3>
+            </div>
+            <div class="category"  data-category = "satellite">
+                <div class="image-wrapper">
+                    <img src="images/Satellite.PNG" alt="Image 5">
+                </div>
+                <h3>Satellite</h3>
+            </div>
+            <div class="category" data-category = "vehicle">
+                <div class="image-wrapper">
+                    <img src="images/Vehicle.PNG" alt="Image 6">
+                </div>
+                <h3>Vehicle</h3>
+            </div>
+            <div class="category" data-category = "wifi">
+                <div class="image-wrapper">
+                    <img src="images/Wi-Fi.PNG" alt="Image 7">
+                </div>
+                <h3>Wi-Fi</h3>
             </div>
         </div>
+        </div>
 
+        <div class = "specific_topics"> 
+            <div class="specific_services" data-category="plumbing">
+                <div class="topic">Leaky faucet</div>
+                <div class="topic">Clogged drain</div>
+                <div class="topic">Low water pressure</div>
+                <div class="topic">Burst pipe</div>
+            </div>
+            <div class="specific_services" data-category = "appliances">  
+                <div class="topic">Refrigerator not cooling</div>
+                <div class="topic">Washing machine not draining</div>
+                <div class="topic">Oven not heating</div>
+                <div class="topic">Microwave sparking</div>
+            </div>                          
+            <div class="specific_services" data-category = "furniture"> 
+                <div class="topic">Broken chair legs</div>
+                <div class="topic">Scratched wood surfaces</div>
+                <div class="topic">Furniture assembly</div>
+                <div class="topic">Stuck drawer slides</div>
+            </div>                   
+            <div class="specific_services" data-category = "vehicle"> 
+                <div class="topic">Engine won't start</div>
+                <div class="topic">Brake failure</div>
+                <div class="topic">Battery dead</div>
+                <div class="topic">Fluid leaks</div>
+                <div class="topic">Electrical faults</div>
+            </div>                                              
+            <div class="specific_services" data-category = "wifi"> 
+                <div class="topic">Slow internet speed</div>
+                <div class="topic">Router not powering on</div>
+                <div class="topic">Frequent disconnections</div>
+                <div class="topic">Weak signal coverage</div>
+            </div>                      
+            <div class="specific_services" data-category = "electrical">  
+                <div class="topic">Power failures</div>
+                <div class="topic">Faulty outlets</div>
+                <div class="topic">Wiring issues</div>
+                <div class="topic">Circuit breaker tripping</div>
+                <div class="topic">Flickering lights</div>
+            </div>                                      
+            <div class="specific_services" data-category = "satellite"> 
+                <div class="topic">Dish misalignment</div>
+                <div class="topic">No signal reception</div>
+                <div class="topic">Damaged cabales</div>
+                <div class="topic">TV screen glichting </div>
+            </div>
+        </div>
     </main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-                const buttons = document.querySelectorAll(".service_button");
+    <script> 
+            document.querySelectorAll('.category').forEach(category => {
+                category.addEventListener('click', function() {
+                    // Remove active class from all categories    
+                    document.querySelectorAll('.category').forEach(i => i.classList.remove('active'));
+                    // Add active class to the clicked category
+                    this.classList.add('active');
 
-                buttons.forEach(button => {
-                    button.addEventListener("click", function () {
-                        // Remove 'selected' class from all buttons
-                        buttons.forEach(btn => btn.classList.remove("selected"));
-
-                        // Add 'selected' class to the clicked button
-                        this.classList.add("selected");
-
-                        // Get the selected service name (if needed for further logic)
-                        const selectedService = this.getAttribute("data-service");
-                        console.log("Selected Service:", selectedService);
-                    });
+                    const selectedCategory = this.getAttribute('data-category');
+                    // Hide all specific services
+                    document.querySelectorAll('.specific_services').forEach(group => {group.style.display = 'none';});
+                    // Show specific services for the selected category
+                    document.querySelector(`.specific_services[data-category="${selectedCategory}"]`).style.display = 'flex';
                 });
             });
-
-    </script>
+    </script> 
 
 </body>
 
