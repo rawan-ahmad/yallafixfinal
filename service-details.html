@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="service-details-page">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      background-color: #f5f5f5;
+      padding: 15px;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .navbar li {
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .navbar li.active {
+      background-color: #e0e0ff;
+      font-weight: bold;
+    }
+
+    .category-content {
+      padding: 20px;
+    }
+
+    .category {
+      display: none;
+    }
+
+    .category.active {
+      display: block;
+    }
+
+    .sub-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .sub-categories button {
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      background-color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sub-categories button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .content img {
+      max-width: 300px;
+      border-radius: 10px;
+    }
+  </style>
+
+<!-- Global header -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename"><span>Y</span>alla<span>F</span>ix</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Service Details</h1>
+              <p class="mb-0">Click on your need to proceed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Service Details</li>
+          </ol>
+        </div>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col" data-aos="fade-up" data-aos-delay="100">
+
+            <nav class="navbar">
+              <ul>
+                <li data-category="assembly" class="active">Assembly</li>
+                <li data-category="mounting">Mounting</li>
+                <li data-category="moving">Moving</li>
+                <li data-category="cleaning">Cleaning</li>
+                <li data-category="outdoor-help">Outdoor Help</li>
+                <li data-category="home-repairs">Home Repairs</li>
+                <li data-category="painting">Painting</li>
+                <li data-category="trending">Trending</li>
+              </ul>
+            </nav>
+
+            <div class="category-content">
+              <div id="assembly" class="category active">
+                <div class="sub-categories">
+                  <button>General Furniture Assembly</button>
+                  <button>IKEA Assembly</button>
+                  <button>Crib Assembly</button>
+                  <button>PAX Assembly</button>
+                  <button>Bookshelf Assembly</button>
+                  <button>Desk Assembly</button>
+                </div>
+
+                <div class="content">
+                  <h2>Assembly</h2>
+                  <p>✔ Assemble or disassemble furniture items by unboxing, building, and any cleanup.</p>
+                  <p>✔ Now Trending: Curved sofas, computer desks, and sustainable materials.</p>
+                  <img src="assembly-image.jpg" alt="Assembly Image">
+                </div>
+              </div>
+
+              <div id="home-repairs" class="category">
+                <div class="sub-categories">
+                  <button>Door, Cabinet, & Furniture Repair</button>
+                  <button>Wall Repair</button>
+                  <button>Sealing & Caulking</button>
+                  <button>Appliance Installation & Repairs</button>
+                  <button>Window & Blinds Repair</button>
+                  <button>Flooring & Tiling Help</button>
+                  <button>Electrical Help</button>
+                  <button>Plumbing Help</button>
+                  <button>Light Carpentry</button>
+                </div>
+
+                <div class="content">
+                  <h2>Home Repairs</h2>
+                  <p>✔ Home improvements like plumbing, electrical, and appliance installation.</p>
+                  <p>✔ Now Trending: Chandeliers, brass faucets, and smart lighting.</p>
+                  <img src="home-repair-image.jpg" alt="Home Repair Image">
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+    </section>
+    <!-- /Service Details Section -->
+
+  </main>
+
+   <!--Global footer -->
+   <footer id="footer" class="footer light-background">
+    <div class="container">
+        <div class="copyright text-center ">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">YallaFix</strong> <span>All Rights
+                    Reserved</span></p>
+        </div>
+        <div class="social-links d-flex justify-content-center">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+        <div class="credits">
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+</footer>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+  class="bi bi-arrow-up-short"></i></a>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+<script src="vendor/aos/aos.js"></script>
+<script src="vendor/glightbox/js/glightbox.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
