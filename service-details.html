@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
-      rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="vendor/aos/aos.css" rel="stylesheet">
@@ -51,8 +51,28 @@
     }
 
     .navbar li.active {
-      background-color: #e0e0ff;
+      background-color: #edeafe;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      .navbar ul {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .navbar a {
+        display: block;
+        padding: 10px 15px;
+        width: 100%;
+        text-align: left;
+      }
     }
 
     .category-content {
@@ -99,7 +119,7 @@
     }
   </style>
 
-<!-- Global header -->
+  <!-- Global header -->
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
@@ -152,55 +172,144 @@
           <div class="col" data-aos="fade-up" data-aos-delay="100">
 
             <nav class="navbar">
-              <ul>
-                <li data-category="assembly" class="active">Assembly</li>
-                <li data-category="mounting">Mounting</li>
-                <li data-category="moving">Moving</li>
-                <li data-category="cleaning">Cleaning</li>
-                <li data-category="outdoor-help">Outdoor Help</li>
-                <li data-category="home-repairs">Home Repairs</li>
-                <li data-category="painting">Painting</li>
-                <li data-category="trending">Trending</li>
+              <ul style="margin-left: 2%;">
+                <li data-category="door-cabinet-repair">Door cabinet repair</li>
+                <li data-category="wall-repair">Wall repair</li>
+                <li data-category="sealing-caulking">Sealing caulking</li>
+                <li data-category="appliance-repair">Appliance repair</li>
+                <li data-category="flooring-tiling">Flooring tiling</li>
+                <li data-category="electrical-help">Electrical help</li>
+                <li data-category="plumbing-help">Plumbing help</li>
+                <li data-category="light-carpentry">Light carpentry</li>
               </ul>
             </nav>
 
             <div class="category-content">
-              <div id="assembly" class="category active">
+              <!-- Door, Cabinet, & Furniture Repair -->
+              <div id="door-cabinet-repair" class="category">
                 <div class="sub-categories">
-                  <button>General Furniture Assembly</button>
-                  <button>IKEA Assembly</button>
-                  <button>Crib Assembly</button>
-                  <button>PAX Assembly</button>
-                  <button>Bookshelf Assembly</button>
-                  <button>Desk Assembly</button>
+                  <button>Hinge Fixing</button>
+                  <button>Drawer Repair</button>
+                  <button>Door Frame Adjustment</button>
+                  <button>Wood Polishing</button>
                 </div>
-
                 <div class="content">
-                  <h2>Assembly</h2>
-                  <p>✔ Assemble or disassemble furniture items by unboxing, building, and any cleanup.</p>
-                  <p>✔ Now Trending: Curved sofas, computer desks, and sustainable materials.</p>
-                  <img src="assembly-image.jpg" alt="Assembly Image">
+                  <h2>Door, Cabinet, & Furniture Repair</h2>
+                  <p>✔ Repair broken hinges, fix drawers, and restore wooden furniture.</p>
+                  <p>✔ Now Trending: Vintage furniture restoration and soft-close cabinet hinges.</p>
+                  <img src="door-cabinet-repair.jpg" alt="Door, Cabinet, & Furniture Repair Image">
                 </div>
               </div>
 
-              <div id="home-repairs" class="category">
+              <!-- Wall Repair -->
+              <div id="wall-repair" class="category">
                 <div class="sub-categories">
-                  <button>Door, Cabinet, & Furniture Repair</button>
-                  <button>Wall Repair</button>
-                  <button>Sealing & Caulking</button>
-                  <button>Appliance Installation & Repairs</button>
-                  <button>Window & Blinds Repair</button>
-                  <button>Flooring & Tiling Help</button>
-                  <button>Electrical Help</button>
-                  <button>Plumbing Help</button>
-                  <button>Light Carpentry</button>
+                  <button>Drywall Patching</button>
+                  <button>Crack Filling</button>
+                  <button>Hole Repair</button>
+                  <button>Textured Wall Fixing</button>
                 </div>
-
                 <div class="content">
-                  <h2>Home Repairs</h2>
-                  <p>✔ Home improvements like plumbing, electrical, and appliance installation.</p>
-                  <p>✔ Now Trending: Chandeliers, brass faucets, and smart lighting.</p>
-                  <img src="home-repair-image.jpg" alt="Home Repair Image">
+                  <h2>Wall Repair</h2>
+                  <p>✔ Fix holes, cracks, and drywall damage to make your walls look new.</p>
+                  <p>✔ Now Trending: Smooth wall finishes and eco-friendly patching materials.</p>
+                  <img src="wall-repair.jpg" alt="Wall Repair Image">
+                </div>
+              </div>
+
+              <!-- Sealing & Caulking -->
+              <div id="sealing-caulking" class="category">
+                <div class="sub-categories">
+                  <button>Bathroom Caulking</button>
+                  <button>Window Sealing</button>
+                  <button>Kitchen Backsplash Sealing</button>
+                  <button>Door Draft Prevention</button>
+                </div>
+                <div class="content">
+                  <h2>Sealing & Caulking</h2>
+                  <p>✔ Prevent water leaks and drafts with professional sealing and caulking.</p>
+                  <p>✔ Now Trending: Mold-resistant caulking and energy-efficient sealing.</p>
+                  <img src="sealing-caulking.jpg" alt="Sealing & Caulking Image">
+                </div>
+              </div>
+
+              <!-- Appliance Installation & Repairs -->
+              <div id="appliance-repair" class="category">
+                <div class="sub-categories">
+                  <button>Refrigerator Repair</button>
+                  <button>Washing Machine Fix</button>
+                  <button>Oven Installation</button>
+                  <button>Dishwasher Setup</button>
+                </div>
+                <div class="content">
+                  <h2>Appliance Installation & Repairs</h2>
+                  <p>✔ Install and repair home appliances to keep them running smoothly.</p>
+                  <p>✔ Now Trending: Smart home appliances and energy-efficient solutions.</p>
+                  <img src="appliance-repair.jpg" alt="Appliance Installation & Repairs Image">
+                </div>
+              </div>
+
+              <!-- Flooring & Tiling Help -->
+              <div id="flooring-tiling" class="category">
+                <div class="sub-categories">
+                  <button>Tile Repair</button>
+                  <button>Laminate Installation</button>
+                  <button>Hardwood Refinishing</button>
+                  <button>Vinyl Flooring Setup</button>
+                </div>
+                <div class="content">
+                  <h2>Flooring & Tiling Help</h2>
+                  <p>✔ Install and repair flooring materials to keep your home looking great.</p>
+                  <p>✔ Now Trending: Waterproof vinyl flooring and marble-effect tiles.</p>
+                  <img src="flooring-tiling.jpg" alt="Flooring & Tiling Image">
+                </div>
+              </div>
+
+              <!-- Electrical Help -->
+              <div id="electrical-help" class="category">
+                <div class="sub-categories">
+                  <button>Outlet Repair</button>
+                  <button>Light Fixture Installation</button>
+                  <button>Circuit Breaker Replacement</button>
+                  <button>Wiring Troubleshooting</button>
+                </div>
+                <div class="content">
+                  <h2>Electrical Help</h2>
+                  <p>✔ Fix electrical issues, install new fixtures, and upgrade wiring.</p>
+                  <p>✔ Now Trending: Smart lighting and energy-efficient LED solutions.</p>
+                  <img src="electrical-help.jpg" alt="Electrical Help Image">
+                </div>
+              </div>
+
+              <!-- Plumbing Help -->
+              <div id="plumbing-help" class="category">
+                <div class="sub-categories">
+                  <button>Leaky Faucet Fix</button>
+                  <button>Pipe Replacement</button>
+                  <button>Drain Cleaning</button>
+                  <button>Water Heater Repair</button>
+                </div>
+                <div class="content">
+                  <h2>Plumbing Help</h2>
+                  <p>✔ Repair leaks, replace pipes, and clean clogged drains efficiently.</p>
+                  <p>✔ Now Trending: Water-efficient faucets and tankless water heaters.</p>
+                  <img src="plumbing-help.jpg" alt="Plumbing Help Image">
+                </div>
+              </div>
+
+              <!-- Light Carpentry -->
+              <div id="light-carpentry" class="category">
+                <div class="sub-categories">
+                  <button>Shelf Installation</button>
+                  <button>Trim & Molding</button>
+                  <button>Custom Woodwork</button>
+                  <button>Deck Repair</button>
+                </div>
+                <div class="content">
+                  <h2>Light Carpentry</h2>
+                  <p>✔ Build and repair wooden fixtures, trim, and moldings.</p>
+                  <p>✔ Now Trending: Built-in shelving and reclaimed wood projects.</p>
+                  <img src="light-carpentry.jpg" alt="Light Carpentry Image">
                 </div>
               </div>
 
@@ -210,38 +319,40 @@
 
         </div>
 
+      </div>
+
     </section>
     <!-- /Service Details Section -->
 
   </main>
 
-   <!--Global footer -->
-   <footer id="footer" class="footer light-background">
+  <!--Global footer -->
+  <footer id="footer" class="footer light-background">
     <div class="container">
-        <div class="copyright text-center ">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">YallaFix</strong> <span>All Rights
-                    Reserved</span></p>
-        </div>
-        <div class="social-links d-flex justify-content-center">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-        </div>
-        <div class="credits">
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">YallaFix</strong> <span>All Rights
+            Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
     </div>
-</footer>
+  </footer>
 
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-  class="bi bi-arrow-up-short"></i></a>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/php-email-form/validate.js"></script>
-<script src="vendor/aos/aos.js"></script>
-<script src="vendor/glightbox/js/glightbox.min.js"></script>
-<script src="js/main.js"></script>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
