@@ -1,0 +1,26 @@
+{
+  "name": "yallafix",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mahmoud-Jebeily/YallaFix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mahmoud-Jebeily/YallaFix/issues"
+  },
+  "homepage": "https://github.com/Mahmoud-Jebeily/YallaFix#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "twilio": "^5.4.5"
+  }
+}
