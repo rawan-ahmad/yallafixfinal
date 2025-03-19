@@ -11,18 +11,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
-      rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="vendor/aos/aos.css" rel="stylesheet">
   <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
 
-  <title>YallaFix Sign Up</title>
+  <title>YallaFix - Sign Up</title>
 </head>
 
-<body class="index-page">
+<body>
   <!-- Global header -->
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -41,8 +41,10 @@
       </nav>
     </div>
   </header>
+  <!-- End of Global header -->
 
   <main class="main">
+
     <!-- Sign Up Form -->
     <section class="col-md-12">
       <div class="container-help-box d-flex flex-column justify-content-center align-items-center">
@@ -52,41 +54,22 @@
           <form id="signupForm" onsubmit="return false;">
             <div class="form-group" style="margin-top: 10%;">
               <!-- Phone number input -->
-              <input 
-                type="text" 
-                class="form-control" 
-                id="phoneNumber"
-                placeholder="Phone Number (e.g., +1234567890)" 
-                required
-              >
+              <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number (e.g., +1234567890)"
+                required>
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10%;">
               <!-- Button to send WhatsApp OTP -->
-              <button 
-                class="button-format" 
-                type="button" 
-                onclick="sendWhatsAppOTP()"
-              >
+              <button class="button-format" type="button" onclick="sendWhatsAppOTP()">
                 Send Code
               </button>
             </div>
             <div class="form-group" style="margin-top: 10%;">
               <!-- OTP/Confirmation code input -->
-              <input 
-                type="text" 
-                class="form-control" 
-                id="confirmationCode"
-                placeholder="Confirmation Code" 
-                required
-              >
+              <input type="text" class="form-control" id="confirmationCode" placeholder="Confirmation Code" required>
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10%;">
               <!-- Button to verify OTP -->
-              <button 
-                class="button-format" 
-                type="button" 
-                onclick="verifyWhatsAppOTP()"
-              >
+              <button class="button-format" type="button" onclick="verifyWhatsAppOTP()">
                 Sign up
               </button>
             </div>
@@ -95,6 +78,7 @@
         </div>
       </div>
     </section>
+    <!-- End of Sign Up Form -->
 
     <!-- Example of other content (icon-boxes, contact details, etc.) could go here -->
     <section class="col-md-12">
@@ -110,6 +94,7 @@
         <!-- ... your existing code ... -->
       </div>
     </section>
+
   </main>
 
   <!-- Global footer -->
@@ -121,6 +106,7 @@
           <span>All Rights Reserved</span>
         </p>
       </div>
+
       <div class="social-links d-flex justify-content-center">
         <a href=""><i class="bi bi-twitter-x"></i></a>
         <a href=""><i class="bi bi-facebook"></i></a>
@@ -132,7 +118,9 @@
       </div>
     </div>
   </footer>
+  <!-- End of Global footer -->
 
+  <!-- Scroll -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
     <i class="bi bi-arrow-up-short"></i>
   </a>
@@ -179,5 +167,7 @@
       }
     }
   </script>
+
 </body>
+
 </html>
