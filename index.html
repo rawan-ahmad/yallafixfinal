@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  
+
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -72,7 +72,6 @@
 
     #reviews_container {
       margin-top: 4%;
-      /* margin-bottom: 4%; */
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -105,6 +104,110 @@
     }
   </style>
 
+  <style>
+    .submit {
+      background: linear-gradient(135deg, #10066b, #0e178b);
+      color: white;
+      font-size: smaller;
+      padding: 12px 24px;
+      border: none;
+      width: max-content;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .submit:hover {
+      background: #56a2ff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .widget-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: min-content;
+      height: 100%;
+      background-color: #007bff00;
+      color: rgba(255, 255, 255, 0);
+      border: none;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .widget-container {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 450px;
+      height: 85%;
+      background-color: rgba(255, 255, 255, 0.589);
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      overflow-y: auto;
+      display: none;
+      z-index: 999;
+    }
+
+    .widget-container h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feed-container {
+      max-width: 600px;
+      margin: auto;
+
+    }
+
+    .feed-item {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .feed-item img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .feed-item-actions {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+    }
+
+    #page-content {
+      transition: filter 0.3s ease-in-out;
+    }
+
+    .blurred {
+      filter: blur(5px);
+    }
+
+    #feed-widget {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 450px;
+      height: 85%;
+      background-color: rgba(255, 255, 255, 0.589);
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      overflow-y: auto;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1000;
+    }
+  </style>
+
   <title>YallaFix - Index</title>
 </head>
 
@@ -123,7 +226,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><button class="button-format" style="margin-left: 2%;" onclick="window.location.href='signup.html';"
+          <li><button class="submit" style="margin-left: 2%;" onclick="window.location.href='signup.html';"
               type="submit">Sign Up</button></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -135,289 +238,353 @@
 
   <main class="main">
 
-    <!-- Global Hero Section -->
-    <section id="hero" class="hero section light-background">
-      <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-5">
-          <div class="col align-self-center" style="align-items: center;">
-            <img src="images/hi.png" alt="image" id="headerimage">
-            <h2 style="margin-bottom: 2%;">Your tool for booking a technician!</h2>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How it works section -->
-    <section>
-      <div class="HowItWorks">
-        <h1 style="margin-bottom: 60px;">How it works</h1>
-        <div class="steps">
-          <div class="step">
-            <div class="step-number" id="num1">1</div>
-            <div class="textStep">Select the service of your choice.</div>
-          </div>
-          <div class="step">
-            <div class="step-number" style="background-color: #030e5ea6;">2</div>
-            <div class="textStep">Choose your preferred salary range and location.</div>
-          </div>
-          <div class="step">
-            <div class="step-number" style="background-color: #000b613e;">3</div>
-            <div class="textStep">Get in touch with a technician.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
-            <p class="who-we-are">Who We Are</p>
-            <h3>Unleashing Potential Freelancing Community</h3>
-            <p class="fst-italic">
-              Connecting property owners with skilled maintenance technicians, offering instant access to reliable
-              repair services.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Transparent pricing.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Verified reviews.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>A diverse range of service providers.</span></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-              <div class="col-lg-6">
-                <img src="images/about1.png" class="img-fluid" alt="">
-              </div>
-              <div class="col-lg-6">
-                <div class="row gy-4">
-                  <div class="col-lg-12">
-                    <img src="images/about2.png" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-lg-12">
-                    <img src="images/about3.png" class="img-fluid" alt="">
-                  </div>
-                </div>
-              </div>
+    <!-- For the blur effect -->
+    <section id="page-content">
+      <!-- Global Hero Section -->
+      <section id="hero" class="hero section light-background">
+        <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-5">
+            <div class="col align-self-center" style="align-items: center;">
+              <img src="images/hi.png" alt="image" id="headerimage">
+              <h2 style="margin-bottom: 2%;">Your tool for booking a technician!</h2>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services section">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <div><span>Check Our</span> <span class="description-title">Services</span></div>
-      </div>
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <i class="bi bi-activity"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Electrician</h3>
-              </a>
-              <p>Repairing electrical wiring, installing smoke detectors, upgrading electrical panels ...</p>
+      <!-- How it works section -->
+      <section>
+        <div class="HowItWorks">
+          <h1 style="margin-bottom: 60px;">How it works</h1>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number" id="num1">1</div>
+              <div class="textStep">Select the service of your choice.</div>
             </div>
-          </div><!-- Service Item 1 -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Plumbing Services</h3>
-              </a>
-              <p>Fixing leaks, unclogging drains and toilet, installing or repairing faucets and sinks ...</p>
+            <div class="step">
+              <div class="step-number" style="background-color: #030e5ea6;">2</div>
+              <div class="textStep">Choose your preferred salary range and location.</div>
             </div>
-          </div><!-- Service Item 2 -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Wifi repair</h3>
-              </a>
-              <p>Fixing slow internet speed, troubleshooting connection issues, updating router firmware ...</p>
-            </div>
-          </div><!-- Service Item 3 -->
-          <a href="service-details.html" class="read-more"><span>More Services</span><i
-              class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Faq Section -->
-    <section id="faq" class="faq section light-background">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="content px-xl-5">
-              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
-            </div>
-          </div>
-          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-            <div class="faq-container">
-              <div class="faq-item faq-active">
-                <h3><span class="num">1.</span> <span>Q1?</span></h3>
-                <div class="faq-content">
-                  <p>A1</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- Faq item 1 -->
-
-              <div class="faq-item">
-                <h3><span class="num">2.</span> <span>Q2?</span></h3>
-                <div class="faq-content">
-                  <p>A2</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- Faq item 2 -->
-
-              <div class="faq-item">
-                <h3><span class="num">3.</span> <span>Q3?</span></h3>
-                <div class="faq-content">
-                  <p>A3</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- Faq item 3 -->
-
-              <div class="faq-item">
-                <h3><span class="num">4.</span> <span>Q4?</span></h3>
-                <div class="faq-content">
-                  <p>A4</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- Faq item 4 -->
-
-              <div class="faq-item">
-                <h3><span class="num">5.</span> <span>Q5?</span></h3>
-                <div class="faq-content">
-                  <p>A5</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- Faq item 5 -->
+            <div class="step">
+              <div class="step-number" style="background-color: #000b613e;">3</div>
+              <div class="textStep">Get in touch with a technician.</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Review section -->
-    <section>
-      <div id="reviews_section">
-        <h1 style="text-align: center;"><b>Check the Reviews of our Customers</b></h1>
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+              <p class="who-we-are">Who We Are</p>
+              <h3>Unleashing Potential Freelancing Community</h3>
+              <p class="fst-italic">
+                Connecting property owners with skilled maintenance technicians, offering instant access to reliable
+                repair services.
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> <span>Transparent pricing.</span></li>
+                <li><i class="bi bi-check-circle"></i> <span>Verified reviews.</span></li>
+                <li><i class="bi bi-check-circle"></i> <span>A diverse range of service providers.</span></li>
+              </ul>
+            </div>
 
-        <div id="reviews_container">
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <div class="reviewer">Chris</div>
-            <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
-              really Love this website.</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <div class="reviewer">Ahmad</div>
-            <div class="review_text">Job completed perfectly! I highly recommend this website.Job completed
-              perfectly! I highly recommend this website.</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <div class="reviewer">Rawan</div>
-            <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
-              really Love this website.</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <div class="reviewer">Mahmoud</div>
-            <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
-              really Love this website.</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <div class="reviewer">Tala</div>
-            <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
-              really Love this website.</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <div class="reviewer">Tala</div>
-            <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
-              really Love this website.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <div><span>Need Help?</span> <span class="description-title">Contact Us</span></div>
-      </div>
-      <div class="container" data-aos="fade" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3 style="margin-left: 3%;">Address</h3>
-                <p>AUB, Beirut, Lebanon</p>
-              </div>
-            </div><!-- Info Item 1 -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3 style="margin-left: 3%;">Call Us</h3>
-                <p>+961 81 123 456</p>
-              </div>
-            </div><!-- Info Item 2 -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3 style="margin-left: 3%;">Email Us</h3>
-                <p>yallafix@gmail.com</p>
-              </div>
-            </div><!--Info Item 3 -->
-          </div>
-          <div class="col-lg-8">
-            <form action="https://getform.io/f/aolmkxkb" method="POST">
+            <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                <div class="col-lg-6">
+                  <img src="images/about1.png" class="img-fluid" alt="">
                 </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <button class="button-format" type="submit">Send Message</button>
+                <div class="col-lg-6">
+                  <div class="row gy-4">
+                    <div class="col-lg-12">
+                      <img src="images/about2.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-12">
+                      <img src="images/about3.png" class="img-fluid" alt="">
+                    </div>
+                  </div>
                 </div>
               </div>
-            </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="services section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Services</h2>
+          <div><span>Check Our</span> <span class="description-title">Services</span></div>
+        </div>
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-item  position-relative">
+                <div class="icon">
+                  <i class="bi bi-activity"></i>
+                </div>
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Electrician</h3>
+                </a>
+                <p>Repairing electrical wiring, installing smoke detectors, upgrading electrical panels ...</p>
+              </div>
+            </div><!-- Service Item 1 -->
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-broadcast"></i>
+                </div>
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Plumbing Services</h3>
+                </a>
+                <p>Fixing leaks, unclogging drains and toilet, installing or repairing faucets and sinks ...</p>
+              </div>
+            </div><!-- Service Item 2 -->
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-easel"></i>
+                </div>
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Wifi repair</h3>
+                </a>
+                <p>Fixing slow internet speed, troubleshooting connection issues, updating router firmware ...</p>
+              </div>
+            </div><!-- Service Item 3 -->
+            <a href="service-details.html" class="read-more"><span>More Services</span><i
+                class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Faq Section -->
+      <section id="faq" class="faq section light-background">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="content px-xl-5">
+                <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+              </div>
+            </div>
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="faq-container">
+                <div class="faq-item faq-active">
+                  <h3><span class="num">1.</span> <span>Q1?</span></h3>
+                  <div class="faq-content">
+                    <p>A1</p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div><!-- Faq item 1 -->
+
+                <div class="faq-item">
+                  <h3><span class="num">2.</span> <span>Q2?</span></h3>
+                  <div class="faq-content">
+                    <p>A2</p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div><!-- Faq item 2 -->
+
+                <div class="faq-item">
+                  <h3><span class="num">3.</span> <span>Q3?</span></h3>
+                  <div class="faq-content">
+                    <p>A3</p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div><!-- Faq item 3 -->
+
+                <div class="faq-item">
+                  <h3><span class="num">4.</span> <span>Q4?</span></h3>
+                  <div class="faq-content">
+                    <p>A4</p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div><!-- Faq item 4 -->
+
+                <div class="faq-item">
+                  <h3><span class="num">5.</span> <span>Q5?</span></h3>
+                  <div class="faq-content">
+                    <p>A5</p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div><!-- Faq item 5 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Review section -->
+      <section>
+        <div id="reviews_section">
+          <h1 style="text-align: center;"><b>Check the Reviews of our Customers</b></h1>
+
+          <div id="reviews_container">
+            <div class="review">
+              <div class="stars">★★★★★</div>
+              <div class="reviewer">Chris</div>
+              <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                really Love this website.</div>
+            </div>
+            <div class="review">
+              <div class="stars">★★★★★</div>
+              <div class="reviewer">Ahmad</div>
+              <div class="review_text">Job completed perfectly! I highly recommend this website.Job completed
+                perfectly! I highly recommend this website.</div>
+            </div>
+            <div class="review">
+              <div class="stars">★★★★★</div>
+              <div class="reviewer">Rawan</div>
+              <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                really Love this website.</div>
+            </div>
+            <div class="review">
+              <div class="stars">★★★★★</div>
+              <div class="reviewer">Mahmoud</div>
+              <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                really Love this website.</div>
+            </div>
+            <div class="review">
+              <div class="stars">★★★★★</div>
+              <div class="reviewer">Tala</div>
+              <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                really Love this website.</div>
+            </div>
+            <div class="review">
+              <div class="stars">★★★★★</div>
+              <div class="reviewer">Tala</div>
+              <div class="review_text">Highly recommended!!! I really Love this website.Highly recommended!!! I
+                really Love this website.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Contact</h2>
+          <div><span>Need Help?</span> <span class="description-title">Contact Us</span></div>
+        </div>
+        <div class="container" data-aos="fade" data-aos-delay="100">
+          <div class="row gy-4">
+            <div class="col-lg-4">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3 style="margin-left: 3%;">Address</h3>
+                  <p>AUB, Beirut, Lebanon</p>
+                </div>
+              </div><!-- Info Item 1 -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3 style="margin-left: 3%;">Call Us</h3>
+                  <p>+961 81 123 456</p>
+                </div>
+              </div><!-- Info Item 2 -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3 style="margin-left: 3%;">Email Us</h3>
+                  <p>yallafix@gmail.com</p>
+                </div>
+              </div><!--Info Item 3 -->
+            </div>
+            <div class="col-lg-8">
+              <form action="https://getform.io/f/aolmkxkb" method="POST">
+                <div class="row gy-4">
+
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  </div>
+
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  </div>
+
+                  <div class="col-md-12">
+                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  </div>
+
+                  <div class="col-md-12 text-center">
+                    <button class="button-format" type="submit">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section>
+
+      <!-- Hidden in the upper right corner -->
+      <button id="hover-widget" class="widget-button">Hover to Show Feed</button>
+
+      <!-- Widget Container -->
+      <div id="feed-widget" class="widget-container">
+
+        <h2 class="text-center">Latest Updates</h2>
+
+        <div class="feed-item">
+          <h5>John Doe - Electrician</h5>
+          <p>Available for emergency repairs today</p>
+          <img src="images/electrical-help.png" alt="Electrician working">
+          <div class="post-actions">
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up"></i> Like</button>
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-down"></i> Dislike</button>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <h5>Plumbing Services</h5>
+          <p>Check out our latest plumbing projects.</p>
+          <img src="images/plumbing-help.png" alt="Plumber working">
+          <div class="post-actions">
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up"></i> Like</button>
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-down"></i> Dislike</button>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <h5>Michael Brown - Carpenter</h5>
+          <p>Building custom furniture, available this weekend</p>
+          <img src="images/light-carpentry.png" alt="Carpenter working on wood">
+          <div class="post-actions">
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up"></i> Like</button>
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-down"></i> Dislike</button>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <h5>Emily Johnson - Painter</h5>
+          <p>Painting services for interior and exterior projects</p>
+          <img src="images/flooring-tiling.png" alt="Painter working on a wall">
+          <div class="post-actions">
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up"></i> Like</button>
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-down"></i> Dislike</button>
+          </div>
+        </div>
+
+        <div class="feed-item">
+          <h5>James Lee - Locksmith</h5>
+          <p>Locked out? I can help! 24/7 emergency services</p>
+          <img src="images/door-cabinet-repair.png" alt="Locksmith working on a door lock">
+          <div class="post-actions">
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-up"></i> Like</button>
+            <button class="btn btn-outline-primary"><i class="bi bi-hand-thumbs-down"></i> Dislike</button>
           </div>
         </div>
       </div>
@@ -454,6 +621,7 @@
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/glightbox/js/glightbox.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/feedScript.js"></script>
 </body>
 
 </html>
