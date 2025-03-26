@@ -33,22 +33,94 @@ app.get("/api/message", (req, res) => {
 
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '$Lut)@t@f@G',
   database: 'yallafix'
 });
 
-connection.connect(error => {
+db.connect(error => {
   if (error) throw error;
   console.log("Successfully connected to the database.");
 });
 
-connection.query('SELECT * FROM users', (error, results, fields) => {
+db.query('SELECT * FROM users', (error, results, fields) => {
   if (error) throw error;
   console.log(results);
 });
 
+app.post('/api/saveUser', (req, res) => {
+    const {
+      uid,
+      name,
+      email,
+      phone,
+      location,
+      isTechnician,
+      expertiseLevel,
+      priceMin,
+      priceMax,
+      services
+    } = req.body;
+  
+    if (!uid || !name || !location) {
+      return res.status(400).send('Missing required user fields');
+    }
+  
+    // Insert into user table
+    const userSql = `
+      INSERT INTO User (firebase_uid, name, phone_number, location, is_technician, created_at)
+      VALUES (?, ?, ?, ?, ?, NOW())
+    `;
+    db.query(userSql, [uid, name, phone || null, location, isTechnician ? 1 : 0], (err) => {
+      if (err) {
+        console.error('Error inserting into User:', err);
+        return res.status(500).send('Error inserting user');
+      }
+  
+      if (isTechnician) {
+        // Insert into Technician table
+        const technicianSql = `
+          INSERT INTO Technician (firebase_uid, expertise_level, min_price, max_price)
+          VALUES (?, ?, ?, ?)
+        `;
+        db.query(
+          technicianSql,
+          [uid, expertiseLevel || null, priceMin || null, priceMax || null],
+          (err) => {
+            if (err) {
+              console.error('Error inserting into Technician:', err);
+              return res.status(500).send('Error inserting technician');
+            }
+  
+            // Insert multiple services (technician_expertise)
+            if (Array.isArray(services) && services.length > 0) {
+              const expertiseSql = `
+                INSERT INTO Technician_Expertise (firebase_uid, expertise)
+                VALUES ?
+              `;
+              const expertiseValues = services.map((service) => [uid, service]);
+  
+              db.query(expertiseSql, [expertiseValues], (err) => {
+                if (err) {
+                  console.error('Error inserting into Technician_Expertise:', err);
+                  return res.status(500).send('Error inserting expertise');
+                }
+  
+                return res.status(200).send('Technician user saved successfully');
+              });
+            } else {
+              // No expertise selected
+              return res.status(200).send('Technician user saved without expertise');
+            }
+          }
+        );
+      } else {
+        return res.status(200).send('Service seeker user saved successfully');
+      }
+    });
+  });
+  
 
-connection.end();
+db.end();

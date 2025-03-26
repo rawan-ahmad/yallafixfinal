@@ -311,6 +311,46 @@
 
       auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
+
+            const uid = userCredential.user.uid;
+
+        // Get form values
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const fullName = `${firstName} ${lastName}`;
+        const phone = ""; // add if there's a phone field
+        const email = document.getElementById("signupEmail").value;
+        const location = document.getElementById("location").value;
+        const role = document.getElementById("role").value;
+        const isTechnician = role === "technician";
+
+        // If technician
+        let expertiseLevel = null, priceMin = null, priceMax = null, services = [];
+        if (isTechnician) {
+        expertiseLevel = document.getElementById("expertise").value;
+        priceMin = parseInt(document.getElementById("priceMin").value);
+        priceMax = parseInt(document.getElementById("priceMax").value);
+        services = [...document.querySelectorAll('#servicesContainer input[type="checkbox"]:checked')].map(s => s.value);
+        }
+
+        // Send to backend
+        fetch('/api/saveUser', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            uid,
+            name: fullName,
+            email,
+            phone,
+            location,
+            isTechnician,
+            expertiseLevel,
+            priceMin,
+            priceMax,
+            services
+        })
+        });
+
           alert("Signup successful!");
           window.location.href = "index.html";
         })
