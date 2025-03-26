@@ -122,5 +122,40 @@ app.post('/api/saveUser', (req, res) => {
     });
   });
   
+  app.get("/profile/:uid", (req, res) => {
+    const uid = req.params.uid;
+
+    const userQuery = `SELECT * FROM User WHERE firebase_uid = ?`;
+    db.query(userQuery, [uid], (err, userResult) => {
+        if (err) return res.status(500).json({ error: "Database error" });
+        if (userResult.length === 0) return res.status(404).json({ error: "User not found" });
+
+        const user = userResult[0];
+
+        if (user.is_technician) {
+            const techQuery = `SELECT * FROM Technician WHERE firebase_uid = ?`;
+            const expertiseQuery = `SELECT expertise FROM Technician_Expertise WHERE firebase_uid = ?`;
+
+            db.query(techQuery, [uid], (err, techResult) => {
+                if (err) return res.status(500).json({ error: "Database error" });
+
+                db.query(expertiseQuery, [uid], (err, expertiseResult) => {
+                    if (err) return res.status(500).json({ error: "Database error" });
+
+                    const expertise = expertiseResult.map(row => row.expertise);
+                    res.json({
+                        ...user,
+                        ...techResult[0],
+                        expertise
+                    });
+                });
+            });
+        } else {
+            res.json(user);
+        }
+    });
+});
+
+
 
 db.end();
