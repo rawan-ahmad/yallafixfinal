@@ -1,8 +1,8 @@
 const technicians = [
-    { name: "Ali Hassan", task: "Plumbing", phone: "123-456-7890" },
-    { name: "Sara Ahmed", task: "Electrical", phone: "987-654-3210" },
-    { name: "John Smith", task: "Carpentry", phone: "555-123-4567" },
-    { name: "Emma Jones", task: "HVAC Repair", phone: "333-789-4561" }
+    { name: "Ali Hassan", task: "Plumbing", phone: "123-456-7890", experience: "Beginner", priceRange: "$" },
+    { name: "Sara Ahmed", task: "Electrical", phone: "987-654-3210", experience: "Expert", priceRange: "$$$$" },
+    { name: "John Smith", task: "Carpentry", phone: "555-123-4567", experience: "Intermediate", priceRange: "$$$" },
+    { name: "Emma Jones", task: "HVAC Repair", phone: "333-789-4561", experience: "Beginner", priceRange: "$$" }
 ];
 
 function displayTechnicians() {
