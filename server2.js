@@ -28,3 +28,27 @@ app.get("/api/message", (req, res) => {
     res.json({ message: "Hello from Node.js!" });
 });
 
+
+
+
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '$Lut)@t@f@G',
+  database: 'yallafix'
+});
+
+connection.connect(error => {
+  if (error) throw error;
+  console.log("Successfully connected to the database.");
+});
+
+connection.query('SELECT * FROM users', (error, results, fields) => {
+  if (error) throw error;
+  console.log(results);
+});
+
+
+connection.end();
