@@ -14,12 +14,16 @@ function displayTechnicians() {
         techDiv.innerHTML = `
         <strong>${technician.name}</strong> - ${technician.task}
         <div class="phone-number">📞 ${technician.phone}</div>
+        <div class="info">Experience: ${technician.experience} - Pricing: ${technician.priceRange} </div>
     `;
 
         techDiv.addEventListener("click", () => {
             const phoneDiv = techDiv.querySelector(".phone-number");
+            const infoDiv = techDiv.querySelector(".info");
             phoneDiv.style.display = phoneDiv.style.display === "block" ? "none" : "block";
+            infoDiv.style.display = infoDiv.style.display === "block" ? "none" : "block";
         });
+
 
         technicianList.appendChild(techDiv);
     });
