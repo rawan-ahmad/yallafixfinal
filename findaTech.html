@@ -141,7 +141,70 @@
     <script src="vendor/aos/aos.js"></script>
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/script2.js"></script>
+    <!-- <script src="js/script2.js"></script> -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+      
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
+            authDomain: "yallafix-8586f.firebaseapp.com",
+            projectId: "yallafix-8586f",
+            storageBucket: "yallafix-8586f.firebasestorage.app",
+            messagingSenderId: "68556947912",
+            appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
+            measurementId: "G-E2BJQZQWGD"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+      
+        const service = localStorage.getItem("selectedService");
+      
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            const uid = user.uid;
+      
+            // Send request to backend to find matching technicians
+            const res = await fetch(`/findTechnicians?uid=${uid}&service=${encodeURIComponent(service)}`);
+            const technicians = await res.json();
+            displayTechnicians(technicians);
+          } else {
+            alert("You must be logged in to find a technician.");
+            window.location.href = "login.html";
+          }
+        });
+      
+        function displayTechnicians(technicians) {
+          const technicianList = document.getElementById("technicianList");
+          technicianList.innerHTML = "";
+      
+          if (technicians.length === 0) {
+            technicianList.innerHTML = "<p>No technicians found matching your location and service.</p>";
+            return;
+          }
+      
+          technicians.forEach(tech => {
+            const techDiv = document.createElement("div");
+            techDiv.className = "technician";
+            techDiv.innerHTML = `
+              <strong>${tech.name}</strong> - ${tech.task}
+              <div class="phone-number">📞 ${tech.phone}</div>
+              <div class="info">Experience: ${tech.expertise_level} - Pricing: ${tech.min_price} - ${tech.max_price} </div>
+            `;
+      
+            techDiv.addEventListener("click", () => {
+              techDiv.querySelector(".phone-number").style.display = "block";
+              techDiv.querySelector(".info").style.display = "block";
+            });
+      
+            technicianList.appendChild(techDiv);
+          });
+        }
+      </script>
+      
+
 </body>
 
 </html>

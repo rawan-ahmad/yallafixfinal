@@ -156,6 +156,36 @@ app.post('/api/saveUser', (req, res) => {
     });
 });
 
+app.get("/findTechnicians", async (req, res) => {
+  const { uid, service } = req.query;
+
+  if (!uid || !service) return res.status(400).json({ error: "Missing uid or service" });
+
+  try {
+    const [userResult] = await db.promise().query("SELECT location FROM User WHERE firebase_uid = ?", [uid]);
+    if (userResult.length === 0) return res.status(404).json({ error: "User not found" });
+
+    const location = userResult[0].location;
+
+    const [techs] = await db.promise().query(
+      `
+      SELECT u.name, u.phone_number AS phone, u.location, t.expertise_level, t.min_price, t.max_price, te.expertise AS task
+      FROM User u
+      JOIN Technician t ON u.firebase_uid = t.firebase_uid
+      JOIN Technician_Expertise te ON t.firebase_uid = te.firebase_uid
+      WHERE u.location = ? AND te.expertise = ?
+      `,
+      [location, service]
+    );
+
+    res.json(techs);
+  } catch (err) {
+    console.error("Error fetching technicians:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 
 
 db.end();

@@ -411,6 +411,16 @@
   <script src="vendor/glightbox/js/glightbox.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/script.js"></script>
+
+  <script>
+    document.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", () => {
+        const service = button.innerText;
+        localStorage.setItem("selectedService", service);
+        window.location.href = "findTech.html";
+      });
+    });
+  </script>
 </body>
 
 </html>
