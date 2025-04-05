@@ -159,7 +159,7 @@
                 <div class="container">
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h1>Create Your Account</h1>
+                            <h1>Edit Your Information</h1>
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,8 @@
             <form id="profileForm">
 
                 <!-- Basic Information -->
-                <h2>Fill your information</h2>
+                <h2>Edit your information</h2>
+
                 <section class="profile-section">
                     <label for="firstName">Add a Profile Picture</label>
                     <div class="preview">
@@ -195,28 +196,7 @@
                     </form>
                 </section>
 
-                <div class="field">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
-                </div>
-                <div class="field">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
-                </div>
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="field">
-                    <label for="password">Password</label>
-                    <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password"
-                        required>
-                </div>
-                <div class="field">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
-                        required>
-                </div>
+
                 <div class="field">
                     <label for="location">Location</label>
                     <select id="location" name="location" required>
@@ -318,98 +298,6 @@
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/script3.js"></script>
-
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
-            authDomain: "yallafix-8586f.firebaseapp.com",
-            projectId: "yallafix-8586f",
-            storageBucket: "yallafix-8586f.firebasestorage.app",
-            messagingSenderId: "68556947912",
-            appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
-            measurementId: "G-E2BJQZQWGD"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-    </script>
-
-    <script>
-        const signupForm = document.getElementById("profileForm");
-
-        signupForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById("signupEmail").value;
-            const password = document.getElementById("signupPassword").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-
-                    const uid = userCredential.user.uid;
-
-                    // Get form values
-                    const firstName = document.getElementById("firstName").value.trim();
-                    const lastName = document.getElementById("lastName").value.trim();
-                    const fullName = `${firstName} ${lastName}`;
-                    const phone = ""; // add if there's a phone field
-                    const email = document.getElementById("signupEmail").value;
-                    const location = document.getElementById("location").value;
-                    const role = document.getElementById("role").value;
-                    const isTechnician = role === "technician";
-
-                    // If technician
-                    let expertiseLevel = null, priceMin = null, priceMax = null, services = [];
-                    if (isTechnician) {
-                        expertiseLevel = document.getElementById("expertise").value;
-                        priceMin = parseInt(document.getElementById("priceMin").value);
-                        priceMax = parseInt(document.getElementById("priceMax").value);
-                        services = [...document.querySelectorAll('#servicesContainer input[type="checkbox"]:checked')].map(s => s.value);
-                    }
-
-                    // Send to backend
-                    fetch('/api/saveUser', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            uid,
-                            name: fullName,
-                            email,
-                            phone,
-                            location,
-                            isTechnician,
-                            expertiseLevel,
-                            priceMin,
-                            priceMax,
-                            services
-                        })
-                    });
-
-                    alert("Signup successful!");
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    alert("Error: " + error.message);
-                });
-        });
-    </script>
 
 </body>
 

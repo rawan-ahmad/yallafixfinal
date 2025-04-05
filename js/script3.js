@@ -138,3 +138,29 @@ function updateSubServices() {
     }
   });
 }
+const fileInput = document.getElementById('fileInput');
+const previewImg = document.getElementById('previewImg');
+
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const url = URL.createObjectURL(file);
+    previewImg.src = url;
+    document.querySelector('.preview::before')?.style?.setProperty('background-image', `url(${url})`);
+  }
+});
+
+document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append('profilePic', fileInput.files[0]);
+
+  const res = await fetch('/upload', {
+    method: 'POST',
+    body: formData
+  });
+
+  const result = await res.json();
+  alert(result.message);
+});

@@ -109,6 +109,18 @@
         .hidden {
             display: none;
         }
+
+        .profile-pic {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 
     <title>YallaFix - Profile Management</title>
@@ -161,83 +173,12 @@
         <div class="container profile-container" style="margin-top: 6%; margin-bottom: 6%;">
             <h2>Profile Information</h2>
             <div id="profile"></div>
+            <a href="edit-profile.html"><span>Edit Profile</span><i class="bi bi-arrow-right"></i></a>
         </div>
         <!-- End of Profile Info -->
 
-        <!-- Information Form -->
-        <div class="container" style="margin-top: 6%; margin-bottom: 6%;">
 
-            <form id="profileForm">
 
-                <!-- Basic Information -->
-                <h2>Edit your information</h2>
-                <div class="field">
-                    <label for="location">Location</label>
-                    <select id="location" name="location" required>
-                        <option value="">Select your location</option>
-                        <option value="Beirut">Beirut</option>
-                        <option value="Tripoli">Tripoli</option>
-                        <option value="Sidon">Sidon</option>
-                        <option value="Tyre">Tyre</option>
-                        <option value="Zahle">Zahle</option>
-                        <option value="Jounieh">Jounieh</option>
-                        <option value="Byblos">Byblos</option>
-                        <option value="Batroun">Batroun</option>
-                        <option value="Aley">Aley</option>
-                        <option value="Saida">Saida</option>
-                        <option value="Bcharre">Bcharre</option>
-                        <option value="Baabda">Baabda</option>
-                        <option value="Baalbek">Baalbek</option>
-                        <option value="Hasbaya">Hasbaya</option>
-                        <option value="Marjayoun">Marjayoun</option>
-                        <option value="Jezzine">Jezzine</option>
-                        <option value="Nabatieh">Nabatieh</option>
-                        <option value="Bint Jbeil">Bint Jbeil</option>
-                        <option value="Koura">Koura</option>
-                        <option value="Zgharta">Zgharta</option>
-                        <option value="Akkar">Akkar</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label for="role">Role</label>
-                    <select id="role" name="role" onchange="toggleTechnicianFields()" required>
-                        <option value="">Select your role</option>
-                        <option value="serviceSeeker">Service Seeker</option>
-                        <option value="technician">Technician</option>
-                    </select>
-                </div>
-
-                <!-- Technician Fields (Hidden by default) -->
-                <div id="technicianFields" class="hidden">
-                    <div class="field">
-                        <label for="expertise">Expertise Level</label>
-                        <input type="text" id="expertise" name="expertise"
-                            placeholder="e.g., Beginner, Intermediate, Expert">
-                    </div>
-
-                    <div class="field">
-                        <label>Price Range</label>
-                        <div class="price-range">
-                            <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
-                            <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
-                        </div>
-                    </div>
-
-                    <div class="service-selection">
-                        <h2>Choose Your Services</h2>
-                        <div id="servicesContainer">
-                            <!-- Service checkboxes will be generated here -->
-                        </div>
-                    </div>
-                </div>
-
-                <button type="submit">Submit</button>
-
-            </form>
-
-        </div>
-        <!-- End of Information Form -->
     </main>
 
     <!-- Global footer -->
@@ -279,7 +220,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-      
+
         const firebaseConfig = {
             apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
             authDomain: "yallafix-8586f.firebaseapp.com",
@@ -289,51 +230,51 @@
             appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
             measurementId: "G-E2BJQZQWGD"
         };
-      
+
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-      
+
         onAuthStateChanged(auth, user => {
-          if (user) {
-            const uid = user.uid;
-      
-            fetch(`http://localhost:5501/profile/${uid}`)
-              .then(res => res.json())
-              .then(user => {
-                const profileDiv = document.getElementById("profile");
-      
-                if (!user) {
-                  profileDiv.innerHTML = "<p>User not found</p>";
-                  return;
-                }
-      
-                let profileHTML = `
+            if (user) {
+                const uid = user.uid;
+
+                fetch(`http://localhost:5501/profile/${uid}`)
+                    .then(res => res.json())
+                    .then(user => {
+                        const profileDiv = document.getElementById("profile");
+
+                        if (!user) {
+                            profileDiv.innerHTML = "<p>User not found</p>";
+                            return;
+                        }
+
+                        let profileHTML = `
                   <p><strong>Name:</strong> ${user.name}</p>
                   <p><strong>Phone:</strong> ${user.phone_number || 'N/A'}</p>
                   <p><strong>Location:</strong> ${user.location || 'N/A'}</p>
                   <p><strong>Role:</strong> ${user.is_technician ? 'Technician' : 'Service Seeker'}</p>
                 `;
-      
-                if (user.is_technician) {
-                  profileHTML += `
+
+                        if (user.is_technician) {
+                            profileHTML += `
                     <p><strong>Expertise Level:</strong> ${user.expertise_level}</p>
                     <p><strong>Price Range:</strong> ${user.min_price} - ${user.max_price}</p>
                     <p><strong>Services:</strong> ${user.expertise.join(", ")}</p>
                   `;
-                }
-      
-                profileDiv.innerHTML = profileHTML;
-              })
-              .catch(err => {
-                console.error("Error fetching profile:", err);
-              });
-          } else {
-            alert("You are not logged in.");
-            window.location.href = "signup.html";
-          }
+                        }
+
+                        profileDiv.innerHTML = profileHTML;
+                    })
+                    .catch(err => {
+                        console.error("Error fetching profile:", err);
+                    });
+            } else {
+                alert("You are not logged in.");
+                window.location.href = "signup.html";
+            }
         });
-      </script>
-      
+    </script>
+
 
 </body>
 
