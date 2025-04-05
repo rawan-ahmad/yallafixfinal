@@ -45,6 +45,94 @@
             margin-top: 5px;
             display: none;
         }
+
+        .technician-card {
+            background-color: #f0f2f5;
+            border-radius: 15px;
+            width: 220px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .technician-card:hover {
+            transform: scale(1.03);
+        }
+
+        .technician-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            background-color: #fff;
+        }
+
+        .technician-info h3 {
+            margin: 5px 0;
+            color: #1e2a78;
+        }
+
+        .technician-info p {
+            margin: 3px 0;
+            font-size: 14px;
+            color: #007bff;
+        }
+
+        .technicians-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+
+        .card-content {
+            transition: filter 0.3s ease;
+        }
+
+        .contact-btn {
+            display: none;
+            margin-top: 2%;
+            background-color: #78b9ffdb;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 0.3s ease;
+        }
+
+        /* When active (card is clicked) */
+        .technician-card.active .card-content {
+            filter: blur(2px);
+        }
+
+        .technician-card.active .contact-btn {
+            display: block;
+        }
+
+        .start-service-btn {
+            display: none;
+            background-color: #5fe27d;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
     </style>
 
     <title>YallaFix - Finding a Tech</title>
@@ -100,7 +188,7 @@
         <!-- Technician list -->
         <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
             <h2>Available Technicians</h2>
-            <div id="technicianList">
+            <div style="margin-top: 5%;" id="technicianList" class="technicians-grid">
                 <!-- Technician list will be generated here -->
             </div>
         </div>
@@ -141,9 +229,9 @@
     <script src="vendor/aos/aos.js"></script>
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
-    <!-- <script src="js/script2.js"></script> -->
+    <script src="js/script2.js"></script>
 
-    <script type="module">
+    <!--  <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
       
@@ -202,8 +290,8 @@
             technicianList.appendChild(techDiv);
           });
         }
-      </script>
-      
+      </script> -->
+
 
 </body>
 
