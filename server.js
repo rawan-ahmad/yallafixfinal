@@ -110,3 +110,39 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 /*hi*/
+
+
+require('dotenv').config();
+const cors = require('cors');
+const OpenAI = require("openai");
+const { Server } = require('http');
+
+app.use(cors());
+app.use(bodyParser.json());
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+app.post('/chatbot', async (req, res) => {
+  const userMessage = req.body.message;
+
+  try {
+    const chatCompletion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: userMessage }],
+    });
+
+    const reply = chatCompletion.choices[0].message.content;
+    res.json({ reply });
+  } catch (error) {
+    console.error("Chatbot error:", error);
+    res.status(500).json({ reply: "Oops! GPT couldn't respond." });
+  }
+});
+
+// to start the server
+const PORT2 = 3001;
+app.listen(PORT2, () => {
+  console.log(`Server running on http://localhost:${PORT2}`);
+});

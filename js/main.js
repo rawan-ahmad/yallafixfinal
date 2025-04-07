@@ -83,3 +83,48 @@
   });
 
 })();
+
+
+let canSendMessage = true;
+const toggleChatbot = () => {
+  const popup = document.getElementById('chatbot-popup');
+  const isVisible = popup.style.display === 'flex';
+  popup.style.display = isVisible ? 'none' : 'flex';
+  document.body.classList.toggle('chatbot-active', !isVisible);
+}
+
+const handleChatKey = async (event) => {
+  if (event.key === 'Enter') {
+    //check cooldown if users tries to send message
+    if (!canSendMessage) {
+      alert("Please wait a few seconds before asking another question.");
+      return;
+    }
+
+    const input = document.getElementById("chatbot-input");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const container = document.getElementById("chatbot-messages");
+    container.innerHTML += `<div><b>You:</b> ${msg}</div>`;
+    input.value = "";
+
+    canSendMessage = false;
+    setTimeout(() => {
+      canSendMessage = true;
+    }, 4000);
+
+    try {
+      const res = await fetch("http://localhost:3001/chatbot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg }),
+      });
+      const data = await res.json();
+      container.innerHTML += `<div><b>Bot:</b> ${data.reply}</div>`;
+      container.scrollTop = container.scrollHeight;
+    } catch (err) {
+      container.innerHTML += `<div><b>Bot:</b> Error connecting to server.</div>`;
+    }
+  }
+};

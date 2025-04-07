@@ -635,6 +635,21 @@
   <script src="vendor/glightbox/js/glightbox.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/feedScript.js"></script>
+
+  <!-- Chatbot Circle Button -->
+  <div id="chatbot-button" onclick="toggleChatbot()">?</div>
+
+  <!-- Chatbot Popup -->
+  <div id="chatbot-popup">
+    <div id="chatbot-header">
+      <span>YallaBot </span>
+      <button onclick="toggleChatbot()">✖</button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <input id="chatbot-input" placeholder="Ask me anything..." onkeydown="handleChatKey(event)">
+  </div>
+
+  
 </body>
 
 </html>
