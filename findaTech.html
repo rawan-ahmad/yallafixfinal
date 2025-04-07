@@ -93,22 +93,6 @@
             transition: filter 0.3s ease;
         }
 
-        .contact-btn {
-            display: none;
-            margin-top: 2%;
-            background-color: #78b9ffdb;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            position: absolute;
-            bottom: 30%;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: opacity 0.3s ease;
-        }
-
         /* When active (card is clicked) */
         .technician-card.active .card-content {
             filter: blur(2px);
@@ -118,20 +102,43 @@
             display: block;
         }
 
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .contact-btn {
+            background-color: #78b9ffdb;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .contact-btn:hover {
+            background-color: #78b9ff;
+        }
+
+        .start-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
         .start-service-btn {
-            display: none;
+            padding: 10px 16px;
             background-color: #5fe27d;
             color: white;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-weight: bold;
             border: none;
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
+            border-radius: 6px;
+            font-size: 14px;
             cursor: pointer;
-            transition: opacity 0.3s ease;
+        }
+
+        .start-service-btn:hover {
+            background-color: #4ff676f9;
         }
     </style>
 
