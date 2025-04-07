@@ -225,6 +225,13 @@
                     </select>
                 </div>
                 <div class="field">
+                    <label>Price Range / Preferance </label>
+                    <div class="price-range">
+                        <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
+                        <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
+                    </div>
+                </div>
+                <div class="field">
                     <label for="role">Role</label>
                     <select id="role" name="role" onchange="toggleTechnicianFields()" required>
                         <option value="">Select your role</option>
@@ -241,13 +248,6 @@
                             placeholder="e.g., Beginner, Intermediate, Expert">
                     </div>
 
-                    <div class="field">
-                        <label>Price Range</label>
-                        <div class="price-range">
-                            <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
-                            <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
-                        </div>
-                    </div>
 
                     <div class="service-selection">
                         <h2>Choose Your Services</h2>
