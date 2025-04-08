@@ -299,6 +299,49 @@
     <script src="js/main.js"></script>
     <script src="js/script3.js"></script>
 
+    <script>
+    document.getElementById("profileForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const user = await firebase.auth().currentUser;
+  if (!user) return alert("User not logged in");
+
+  const uid = user.uid;
+
+  const location = document.getElementById("location").value;
+  const role = document.getElementById("role").value;
+  const isTechnician = role === "technician";
+  const expertise = document.getElementById("expertise").value;
+  const priceMin = parseInt(document.getElementById("priceMin").value);
+  const priceMax = parseInt(document.getElementById("priceMax").value);
+
+  // Get all selected sub-services
+  const services = Array.from(document.querySelectorAll("#servicesContainer input[type='checkbox']:checked"))
+    .map(cb => cb.value);
+
+  const data = {
+    uid,
+    location,
+    role,
+    isTechnician,
+    expertise,
+    priceMin,
+    priceMax,
+    services
+  };
+
+  const res = await fetch("/api/updateProfile", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.text();
+  alert(result);
+});
+
+    </script>
+
 </body>
 
 </html>
