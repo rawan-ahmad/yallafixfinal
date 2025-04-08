@@ -24,12 +24,23 @@
         }
 
         input[type="text"],
-        input[type="number"],
         select {
-            width: 100%;
-            padding: 8px;
+            width: 50%;
+            padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin: 10px auto;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]
+        {
+            width: 20%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         .price-range {
@@ -89,8 +100,9 @@
 
 
         label {
-            margin-left: 5px;
+            margin-left: 25%;
         }
+<<<<<<< HEAD
 
         .profile-section {
             max-width: 400px;
@@ -128,6 +140,9 @@
             height: 100%;
             object-fit: cover;
         }
+=======
+        
+>>>>>>> 5d8d7bb (profile)
     </style>
 
     <title>YallaFix - Profile Management</title>
@@ -205,16 +220,24 @@
                 </div>
                 <div class="field">
                     <label for="email">Email</label>
-                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                    <input type="text" id="signupEmail" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="field">
                     <label for="password">Password</label>
+<<<<<<< HEAD
                     <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password"
+=======
+                    <input type="text" id="signupPassword" name="password" placeholder="Create a Strong password"
+>>>>>>> 5d8d7bb (profile)
                         required>
                 </div>
                 <div class="field">
                     <label for="confirmPassword">Confirm Password</label>
+<<<<<<< HEAD
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
+=======
+                    <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
+>>>>>>> 5d8d7bb (profile)
                         required>
                 </div>
                 <div class="field">
@@ -268,6 +291,16 @@
                             placeholder="e.g., Beginner, Intermediate, Expert">
                     </div>
 
+<<<<<<< HEAD
+=======
+                    <div class="field">
+                        <label>Price Range</label>
+                        <div class="price-range" style="margin-left: 35%;">
+                            <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
+                            <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
+                        </div>
+                    </div>
+>>>>>>> 5d8d7bb (profile)
 
                     <div class="service-selection">
                         <h2>Choose Your Services</h2>
@@ -362,6 +395,7 @@
 
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
+<<<<<<< HEAD
 
                     const uid = userCredential.user.uid;
 
@@ -402,6 +436,8 @@
                         })
                     });
 
+=======
+>>>>>>> 5d8d7bb (profile)
                     alert("Signup successful!");
                     window.location.href = "index.html";
                 })
