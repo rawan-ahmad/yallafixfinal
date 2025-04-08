@@ -24,12 +24,23 @@
         }
 
         input[type="text"],
-        input[type="number"],
         select {
-            width: 100%;
-            padding: 8px;
+            width: 50%;
+            padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin: 10px auto;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]
+        {
+            width: 20%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         .price-range {
@@ -89,8 +100,9 @@
 
 
         label {
-            margin-left: 5px;
+            margin-left: 25%;
         }
+        
     </style>
 
     <title>YallaFix - Profile Management</title>
@@ -156,15 +168,17 @@
                 </div>
                 <div class="field">
                     <label for="email">Email</label>
-                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                    <input type="text" id="signupEmail" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="field">
                     <label for="password">Password</label>
-                    <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password" required>
+                    <input type="text" id="signupPassword" name="password" placeholder="Create a Strong password"
+                        required>
                 </div>
                 <div class="field">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password" required>
+                    <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
+                        required>
                 </div>
                 <div class="field">
                     <label for="location">Location</label>
@@ -212,7 +226,7 @@
 
                     <div class="field">
                         <label>Price Range</label>
-                        <div class="price-range">
+                        <div class="price-range" style="margin-left: 35%;">
                             <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
                             <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
                         </div>
@@ -275,50 +289,50 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
+
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-          apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
-          authDomain: "yallafix-8586f.firebaseapp.com",
-          projectId: "yallafix-8586f",
-          storageBucket: "yallafix-8586f.firebasestorage.app",
-          messagingSenderId: "68556947912",
-          appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
-          measurementId: "G-E2BJQZQWGD"
+            apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
+            authDomain: "yallafix-8586f.firebaseapp.com",
+            projectId: "yallafix-8586f",
+            storageBucket: "yallafix-8586f.firebasestorage.app",
+            messagingSenderId: "68556947912",
+            appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
+            measurementId: "G-E2BJQZQWGD"
         };
-      
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
-      </script>
+    </script>
 
-<script>
-    const signupForm = document.getElementById("profileForm");
-  
-    signupForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-  
-      const email = document.getElementById("signupEmail").value;
-      const password = document.getElementById("signupPassword").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
+    <script>
+        const signupForm = document.getElementById("profileForm");
 
-      if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-      }
+        signupForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          alert("Signup successful!");
-          window.location.href = "index.html";
-        })
-        .catch((error) => {
-          alert("Error: " + error.message);
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Signup successful!");
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
         });
-    });
-  </script>
+    </script>
 
 </body>
 
