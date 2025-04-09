@@ -5,24 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS links (Bootstrap, icons, etc.) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="vendor/aos/aos.css" rel="stylesheet">
     <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
-    <!-- Styling -->
     <style>
         .field {
             margin-bottom: 15px;
         }
-
+    
         input[type="text"],
         select {
             width: 50%;
@@ -33,21 +29,23 @@
             display: block;
             box-sizing: border-box;
         }
-
-        input[type="number"]
-        {
-            width: 20%;
+    
+        input[type="number"] {
+            width: 100px;
             padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            text-align: center;
         }
-
+    
         .price-range {
             display: flex;
-            gap: 10px;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
         }
-
+    
         button {
             background-color: #56a2ff;
             color: white;
@@ -57,39 +55,35 @@
             cursor: pointer;
             width: 100%;
         }
-
+    
         button:hover {
             background-color: #98ea9c;
         }
-
-        /* Hide Technician Fields by default */
+    
         .hidden {
             display: none;
         }
-
+    
         .service-selection {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
             border-radius: 8px;
         }
-
+    
         h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-
-
+    
         .service-item {
             margin-bottom: 15px;
             font-size: large;
             font-weight: bold;
             color: #000b61;
             font-family: "Chakra Petch", serif;
-
         }
-
-
+    
         .subservices {
             margin-left: 20px;
             margin-top: 10px;
@@ -97,20 +91,17 @@
             font-weight: lighter;
             color: #56a2ff;
         }
-
-
+    
         label {
             margin-left: 25%;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
+    
         .profile-section {
             max-width: 400px;
             margin: auto;
             text-align: center;
         }
-
+    
         .preview {
             position: relative;
             width: 200px;
@@ -122,7 +113,7 @@
             border: 2px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+    
         .preview::before {
             content: "";
             position: absolute;
@@ -133,7 +124,7 @@
             z-index: 0;
             opacity: 0.5;
         }
-
+    
         .preview img {
             position: relative;
             z-index: 1;
@@ -141,25 +132,19 @@
             height: 100%;
             object-fit: cover;
         }
-=======
-        
->>>>>>> 5d8d7bb (profile)
-=======
-        
->>>>>>> 5d8d7bb93f7d6993a29f9eba288eb5fd622e0bf6
     </style>
+    
 
     <title>YallaFix - Profile Management</title>
 </head>
 
 <body>
-    <!-- Global header -->
+    <!-- Header -->
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <h1 class="sitename"><span>Y</span>alla<span>F</span>ix</h1>
             </a>
-
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
@@ -169,7 +154,6 @@
             </nav>
         </div>
     </header>
-    <!-- End of Global header -->
 
     <main>
         <!-- Page Title -->
@@ -183,7 +167,6 @@
                     </div>
                 </div>
             </div>
-
             <nav class="breadcrumbs">
                 <div class="container">
                     <ol>
@@ -193,14 +176,10 @@
                 </div>
             </nav>
         </div>
-        <!-- End Page Title -->
 
         <!-- Information Form -->
         <div class="container" style="margin-top: 6%; margin-bottom: 6%;">
-
             <form id="profileForm">
-
-                <!-- Basic Information -->
                 <h2>Fill your information</h2>
                 <section class="profile-section">
                     <label for="firstName">Add a Profile Picture</label>
@@ -208,8 +187,7 @@
                         <img id="previewImg" src="default_pfp.png" alt="Preview" />
                     </div>
                     <form id="uploadForm" enctype="multipart/form-data">
-                        <input style="margin-top: 3%; margin-bottom: 3%; margin-left: 37.5%;" type="file" id="fileInput"
-                            name="profilePic" accept="image/*" required>
+                        <input style="margin-top: 3%; margin-bottom: 3%; margin-left: 37.5%;" type="file" id="fileInput" name="profilePic" accept="image/*" required>
                         <button type="submit" style="width: 30%; height: fit-content;">Upload</button>
                     </form>
                 </section>
@@ -228,29 +206,11 @@
                 </div>
                 <div class="field">
                     <label for="password">Password</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password"
-=======
-                    <input type="text" id="signupPassword" name="password" placeholder="Create a Strong password"
->>>>>>> 5d8d7bb (profile)
-=======
-                    <input type="text" id="signupPassword" name="password" placeholder="Create a Strong password"
->>>>>>> 5d8d7bb93f7d6993a29f9eba288eb5fd622e0bf6
-                        required>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password" required>
                 </div>
                 <div class="field">
                     <label for="confirmPassword">Confirm Password</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
-=======
-                    <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
->>>>>>> 5d8d7bb (profile)
-=======
-                    <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
->>>>>>> 5d8d7bb93f7d6993a29f9eba288eb5fd622e0bf6
-                        required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password" required>
                 </div>
                 <div class="field">
                     <label for="location">Location</label>
@@ -280,7 +240,7 @@
                     </select>
                 </div>
                 <div class="field">
-                    <label>Price Range / Preferance </label>
+                    <label>Price Range / Preference</label>
                     <div class="price-range">
                         <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
                         <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
@@ -295,49 +255,29 @@
                     </select>
                 </div>
 
-                <!-- Technician Fields (Hidden by default) -->
                 <div id="technicianFields" class="hidden">
                     <div class="field">
                         <label for="expertise">Expertise Level</label>
-                        <input type="text" id="expertise" name="expertise"
-                            placeholder="e.g., Beginner, Intermediate, Expert">
+                        <input type="text" id="expertise" name="expertise" placeholder="e.g., Beginner, Intermediate, Expert">
                     </div>
-
-<<<<<<< HEAD
-=======
-                    <div class="field">
-                        <label>Price Range</label>
-                        <div class="price-range" style="margin-left: 35%;">
-                            <input type="number" id="priceMin" name="priceMin" placeholder="Min" required>
-                            <input type="number" id="priceMax" name="priceMax" placeholder="Max" required>
-                        </div>
-                    </div>
->>>>>>> 5d8d7bb (profile)
 
                     <div class="service-selection">
                         <h2>Choose Your Services</h2>
-                        <div id="servicesContainer">
-                            <!-- Service checkboxes will be generated here -->
-                        </div>
+                        <div id="servicesContainer"></div>
                     </div>
                 </div>
 
                 <button type="submit">Submit</button>
-
             </form>
-
         </div>
-        <!-- End of Information Form -->
     </main>
 
-    <!-- Global footer -->
+    <!-- Footer -->
     <footer id="footer" class="footer light-background">
         <div class="container">
-            <div class="copyright text-center ">
-                <p>© <span>Copyright</span> <strong class="px-1 sitename">YallaFix</strong> <span>All Rights
-                        Reserved</span></p>
+            <div class="copyright text-center">
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">YallaFix</strong> <span>All Rights Reserved</span></p>
             </div>
-
             <div class="social-links d-flex justify-content-center">
                 <a href=""><i class="bi bi-twitter-x"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -345,19 +285,16 @@
                 <a href=""><i class="bi bi-linkedin"></i></a>
             </div>
             <div class="credits">
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
     </footer>
-    <!-- End of Global footer -->
 
-    <!-- Scroll -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
     </a>
 
-    <!-- Vendor JS Files -->
+    <!-- Scripts -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/aos/aos.js"></script>
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
@@ -365,15 +302,10 @@
     <script src="js/script3.js"></script>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
             apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
             authDomain: "yallafix-8586f.firebaseapp.com",
@@ -384,7 +316,6 @@
             measurementId: "G-E2BJQZQWGD"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
@@ -407,52 +338,6 @@
 
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                    const uid = userCredential.user.uid;
-
-                    // Get form values
-                    const firstName = document.getElementById("firstName").value.trim();
-                    const lastName = document.getElementById("lastName").value.trim();
-                    const fullName = `${firstName} ${lastName}`;
-                    const phone = ""; // add if there's a phone field
-                    const email = document.getElementById("signupEmail").value;
-                    const location = document.getElementById("location").value;
-                    const role = document.getElementById("role").value;
-                    const isTechnician = role === "technician";
-
-                    // If technician
-                    let expertiseLevel = null, priceMin = null, priceMax = null, services = [];
-                    if (isTechnician) {
-                        expertiseLevel = document.getElementById("expertise").value;
-                        priceMin = parseInt(document.getElementById("priceMin").value);
-                        priceMax = parseInt(document.getElementById("priceMax").value);
-                        services = [...document.querySelectorAll('#servicesContainer input[type="checkbox"]:checked')].map(s => s.value);
-                    }
-
-                    // Send to backend
-                    fetch('/api/saveUser', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            uid,
-                            name: fullName,
-                            email,
-                            phone,
-                            location,
-                            isTechnician,
-                            expertiseLevel,
-                            priceMin,
-                            priceMax,
-                            services
-                        })
-                    });
-
-=======
->>>>>>> 5d8d7bb (profile)
-=======
->>>>>>> 5d8d7bb93f7d6993a29f9eba288eb5fd622e0bf6
                     alert("Signup successful!");
                     window.location.href = "index.html";
                 })
@@ -461,7 +346,6 @@
                 });
         });
     </script>
-
 </body>
 
 </html>
