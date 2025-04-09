@@ -1,4 +1,4 @@
-const express = require("express");
+/*const express = require("express");
 const cors = require("cors");
 
 const app = express();
@@ -328,4 +328,4 @@ app.get("/findTechnicians", async (req, res) => {
 
 
 
-db.end();
+db.end(); */

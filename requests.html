@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS links (Bootstrap, icons, etc.) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=DM+Serif+Text:ital@0;1&family=News+Cycle:wght@400;700&family=Newsreader:opsz,wght@6..72,700&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/aos/aos.css" rel="stylesheet">
+    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <style>
+        .container {
+            padding: 20px;
+        }
+
+        .history-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .history-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .request-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 1%;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-card p {
+            margin: 5px ;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Global header -->
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <h1 class="sitename"><span>Y</span>alla<span>F</span>ix</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Page Title -->
+        <div class="page-title" data-aos="fade">
+            <div class="heading">
+                <div class="container">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-8">
+                            <h1>View My Profile</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="breadcrumbs">
+                <div class="container">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="current">Profile</li>
+                    </ol>
+                </div>
+            </nav>
+        </div>
+        <!-- End Page Title -->
+
+        <div class="container">
+            <h1>Service Requests</h1>
+            <div id="requests" class="history-list"></div>
+        </div>
+        <script src="requests.js"></script>
+
+        <div class="container">
+            <h1 class="history-title">Technician History</h1>
+            <div id="technicianHistory" class="history-list">
+                <!-- Technician request history will be populated here -->
+            </div>
+        </div>
+
+        <script>
+            // Reuse the `loadTechHistory` function from your script
+            async function loadTechHistory() {
+                const response = await fetch('http://localhost:3000/api/customer-history');
+                const history = await response.json();
+                renderTechHistory(history);
+            }
+
+            function renderTechHistory(history) {
+                const historyContainer = document.getElementById('technicianHistory');
+                historyContainer.innerHTML = '';
+
+                history.forEach(request => {
+                    const requestCard = document.createElement('div');
+                    requestCard.className = 'request-card';
+                    requestCard.innerHTML = `
+                        <p><strong>Task:</strong> ${request.task}</p>
+                        <p><strong>Technician:</strong> ${request.techName}</p>
+                        <p><strong>Customer:</strong> ${request.customerName}</p>
+                        <p><strong>Status:</strong> ${request.status}</p>
+                    `;
+                    historyContainer.appendChild(requestCard);
+                });
+            }
+
+            // Load technician history on page load
+            loadTechHistory();
+        </script>
+    </main>
+
+    <!-- Global footer -->
+    <footer id="footer" class="footer light-background">
+        <div class="container">
+            <div class="copyright text-center ">
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">YallaFix</strong> <span>All Rights
+                        Reserved</span></p>
+            </div>
+
+            <div class="social-links d-flex justify-content-center">
+                <a href=""><i class="bi bi-twitter-x"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+            <div class="credits">
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Global footer -->
+
+    <!-- Scroll -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Vendor JS Files -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/aos/aos.js"></script>
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/script3.js"></script>
+    <script src="js/script2.js"></script>
+    <script src="script4.js"></script>
+    <script src="server5.js"></script>
+
+</body>
+
+</html>

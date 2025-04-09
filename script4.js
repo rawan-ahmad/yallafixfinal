@@ -1,6 +1,6 @@
 const userId = 1;  // Change this to test different users
 
-fetch(`http://localhost:5501/profile/${userId}`)
+fetch(`http://localhost:3000/profile/${userId}`)
     .then(response => response.json())
     .then(user => {
         const profileDiv = document.getElementById("profile");
