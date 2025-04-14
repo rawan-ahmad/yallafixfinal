@@ -81,10 +81,46 @@ function displayTechnicians() {
             });
         });
 
-        startBtn.addEventListener("click", (e) => {
+
+        // Handle request submission
+        startBtn.addEventListener("click", async (e) => {
             e.stopPropagation();
-            window.location.href = "service-loading.html";
+            const customerName = "John Doe"; // Replace with dynamic customer name if available
+            const task = technician.task;
+            const techName = technician.name;
+
+            const newRequest = {
+                id: Date.now().toString(),
+                customerName,
+                task,
+                techName,
+                status: "Pending",
+            };
+
+            // Send the request to the server
+            const response = await fetch('http://localhost:3000/api/service-requests', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRequest),
+            });
+
+            if (response.ok) {
+                alert(`Request sent to ${technician.name}`);
+                contactBtnsContainer.style.display = "none";
+            } else {
+                alert("Failed to send request. Please try again.");
+            }
+
+            loadCustomerHistory();
+            loadTechHistory();
         });
+
+
+        //startBtn.addEventListener("click", (e) => {
+        //   e.stopPropagation();
+        //  window.location.href = "service-loading.html";
+        //  });
+
 
         technicianList.appendChild(techDiv);
     });

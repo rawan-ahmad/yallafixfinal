@@ -121,6 +121,36 @@
             border: 2px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .container {
+            padding: 20px;
+            
+        }
+
+        .history-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .history-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .request-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-card p {
+            margin: 5px 0;
+        }
     </style>
 
     <title>YallaFix - Profile Management</title>
@@ -177,7 +207,42 @@
         </div>
         <!-- End of Profile Info -->
 
+        <div class="container">
+            <h1 class="history-title">Customer History</h1>
+            <div id="customerHistory" class="history-list">
+                <!-- Customer request history will be populated here -->
+            </div>
+        </div>
 
+        <script>
+            // Function to fetch and display customer history
+            async function loadCustomerHistory() {
+                const response = await fetch('http://localhost:3000/api/customer-history');
+                const history = await response.json();
+                renderCustomerHistory(history);
+            }
+
+            // Function to render the customer's request history
+            function renderCustomerHistory(history) {
+                const historyContainer = document.getElementById('customerHistory');
+                historyContainer.innerHTML = '';
+
+                history.forEach(request => {
+                    const requestCard = document.createElement('div');
+                    requestCard.className = 'request-card';
+                    requestCard.innerHTML = `
+                        <p><strong>Task:</strong> ${request.task}</p>
+                        <p><strong>Technician:</strong> ${request.techName}</p>
+                        <p><strong>Customer:</strong> ${request.customerName}</p>
+                        <p><strong>Status:</strong> ${request.status}</p>
+                    `;
+                    historyContainer.appendChild(requestCard);
+                });
+            }
+
+            // Load customer history on page load
+            loadCustomerHistory();
+        </script>
 
     </main>
 
@@ -214,10 +279,11 @@
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/script3.js"></script>
-    <!-- <script src="script4.js"></script> -->
-    <script src="server2.js"></script>
+    <script src="script4.js"></script>
+    <script src="js/script2.js"></script>
 
-    <script type="module">
+
+    <!-- <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
@@ -273,7 +339,7 @@
                 window.location.href = "login.html";
             }
         });
-    </script>
+    </script> -->
 
 
 </body>
