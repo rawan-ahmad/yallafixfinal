@@ -179,7 +179,7 @@
 
         <!-- Information Form -->
         <div class="container" style="margin-top: 6%; margin-bottom: 6%;">
-            <form id="profileForm">
+            
                 <h2>Fill your information</h2>
                 <section class="profile-section">
                     <label for="firstName">Add a Profile Picture</label>
@@ -191,6 +191,8 @@
                         <button type="submit" style="width: 30%; height: fit-content;">Upload</button>
                     </form>
                 </section>
+
+                <form id="profileForm">
 
                 <div class="field">
                     <label for="firstName">First Name</label>
@@ -319,9 +321,6 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
-    </script>
-
-    <script>
         const signupForm = document.getElementById("profileForm");
 
         signupForm.addEventListener("submit", function (e) {
@@ -336,7 +335,7 @@
                 return;
             }
 
-            auth.createUserWithEmailAndPassword(email, password)
+            createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     alert("Signup successful!");
                     window.location.href = "index.html";
