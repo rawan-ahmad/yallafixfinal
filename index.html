@@ -46,7 +46,8 @@
     .step-number {
       width: 40px;
       height: 40px;
-      background-color:#1732ff;;
+      background-color:#0a0886;
+      ;
       color: white;
       display: flex;
       font-size: 20px;
@@ -126,9 +127,9 @@
 
     .widget-button {
       position: fixed;
-      top: 10px;
-      right: 10px;
-      width: min-content;
+      top: 10%;
+      right: 0%;
+      width: 2%;
       height: 100%;
       background-color: #007bff00;
       color: rgba(255, 255, 255, 0);
@@ -139,9 +140,9 @@
 
     .widget-container {
       position: fixed;
-      top: 80px;
-      right: 20px;
-      width: 450px;
+      top: 10%;
+      right: 0%;
+      width: 2%;
       height: 85%;
       background-color: rgba(255, 255, 255, 0.589);
       border: none;
@@ -159,7 +160,7 @@
     }
 
     .feed-container {
-      max-width: 600px;
+      max-width: 20%;
       margin: auto;
 
     }
@@ -193,10 +194,10 @@
 
     #feed-widget {
       position: fixed;
-      top: 80px;
-      right: 20px;
-      width: 450px;
-      height: 85%;
+      top: 10%;
+      right: 2%;
+      width: 50%;
+      height: 80%;
       background-color: rgba(255, 255, 255, 0.589);
       border: none;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -205,6 +206,18 @@
       overflow-y: auto;
       transition: opacity 0.3s ease-in-out;
       z-index: 1000;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40vh;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 
@@ -235,7 +248,6 @@
   </header>
   <!-- End of Global header -->
 
-
   <main class="main">
 
     <!-- For the blur effect -->
@@ -245,8 +257,10 @@
         <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="row gy-5">
             <div class="col align-self-center" style="align-items: center;">
-              <img src="images/hi.png" alt="image" id="headerimage">
-              <h2 style="margin-bottom: 2%;">Your tool for booking a technician!</h2>
+              <div class="image-container">
+                <img src="images/hi.png">
+              </div>
+              <h2 style="margin-bottom: 5%;">Your tool for booking a technician!</h2>
             </div>
           </div>
         </div>
@@ -262,16 +276,16 @@
               <div class="textStep">Choose your preferred salary range and location.</div>
             </div>
             <div class="step">
-              <div class="step-number" style="background-color: #233dffbb;">2</div>
+              <div class="step-number" style="background-color:#0a0886a9">2</div>
               <div class="textStep">Select the service of your choice.</div>
             </div>
             <div class="step">
-              <div class="step-number" style="background-color: #1732ff62;">3</div>
+              <div class="step-number" style="background-color:#0a088664">3</div>
               <div class="textStep">Get in touch with a technician.</div>
             </div>
           </div>
         </div>
-      </section>
+      </section>  
 
       <!-- About Section -->
       <section id="about" class="about section">
@@ -375,11 +389,12 @@
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
               <div class="faq-container">
                 <div class="faq-item faq-active">
-                  <h3><span class="num">1.</span> <span>What types of home repair services do you offer?</span></h3>
+                  <h3><span class="num">1.</span> <span>Are your technicians licensed and insured?</span></h3>
                   <div class="faq-content">
-                    <p>We offer a wide range of home repair services including plumbing, electrical repairs, carpentry,
-                      painting, drywall installation, flooring, and general maintenance. Whether it's an emergency or a
-                      planned project, our team is ready to assist with various home repair needs.</p>
+                    <p>We ensure that our team is highly trained, experienced, and complies with all local regulations
+                      to guarantee safe and reliable service. Their experience level will appear to you before
+                      requesting the service.
+                    </p>
                   </div>
                   <i class="faq-toggle bi bi-chevron-right"></i>
                 </div><!-- Faq item 1 -->
@@ -399,19 +414,18 @@
                   <div class="faq-content">
                     <p>Yes! We offer 24/7 emergency repair services for issues such as plumbing leaks, electrical
                       malfunctions, and more. If you're facing an urgent problem, don't hesitate to contact us, and
-                      we’ll send a technician to your location as quickly as possible.
+                      we'll send a technician to your location as quickly as possible.
                     </p>
                   </div>
                   <i class="faq-toggle bi bi-chevron-right"></i>
                 </div><!-- Faq item 3 -->
 
                 <div class="faq-item">
-                  <h3><span class="num">4.</span> <span>Are your technicians licensed and insured?</span></h3>
+                  <h3><span class="num">4.</span> <span>What types of home repair services do you offer?</span></h3>
                   <div class="faq-content">
-                    <p>We ensure that our team is highly trained, experienced, and complies with all local regulations
-                      to guarantee safe and reliable service. Their experience level will appear to you before
-                      requesting the service.
-                    </p>
+                    <p>We offer a wide range of home repair services including plumbing, electrical repairs, carpentry,
+                      painting, drywall installation, flooring, and general maintenance. Whether it's an emergency or a
+                      planned project, our team is ready to assist with various home repair needs.</p>
                   </div>
                   <i class="faq-toggle bi bi-chevron-right"></i>
                 </div><!-- Faq item 4 -->
@@ -649,7 +663,7 @@
     <input id="chatbot-input" placeholder="Ask me anything..." onkeydown="handleChatKey(event)">
   </div>
 
-  
+
 </body>
 
 </html>

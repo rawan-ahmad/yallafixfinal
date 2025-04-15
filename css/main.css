@@ -401,6 +401,7 @@ section,
   overflow: clip;
 }
 
+
 @media (max-width: 1199px) {
 
   section,
@@ -414,6 +415,7 @@ section,
   text-align: center;
   padding-bottom: 60px;
   position: relative;
+  
 }
 
 .section-title h2 {
@@ -1041,5 +1043,4 @@ body.chatbot-active #page-content {
     max-width: 200px;
   }
 }
-
 
