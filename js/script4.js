@@ -9,7 +9,7 @@ fetch(`http://localhost:3000/profile/${userId}`)
             profileDiv.innerHTML = "<p>User not found</p>";
             return;
         }
-        const profilePicUrl = user.pic || "default_pfp.png";
+        const profilePicUrl = user.pic || "images/default_pfp.png";
         let profileHTML = `
            <div>
                 <img src="${profilePicUrl}" alt="Profile Picture" class="profile-pic">

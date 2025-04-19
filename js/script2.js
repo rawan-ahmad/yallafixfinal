@@ -5,7 +5,7 @@ const technicians = [
         phone: "123-456-7890",
         experience: "Beginner",
         priceRange: "$",
-        profilePic: "default_pfp.png"
+        profilePic: "images/default_pfp.png"
     },
     {
         name: "Sara Ahmed",
@@ -13,7 +13,7 @@ const technicians = [
         phone: "987-654-3210",
         experience: "Expert",
         priceRange: "$$$$",
-        profilePic: "default_pfp.png"
+        profilePic: "images/default_pfp.png"
     },
     {
         name: "John Smith",
@@ -21,7 +21,7 @@ const technicians = [
         phone: "555-123-4567",
         experience: "Intermediate",
         priceRange: "$$$",
-        profilePic: "default_pfp.png"
+        profilePic: "images/default_pfp.png"
     },
     {
         name: "Emma Jones",
@@ -29,7 +29,7 @@ const technicians = [
         phone: "333-789-4561",
         experience: "Beginner",
         priceRange: "$$",
-        profilePic: "default_pfp.png"
+        profilePic: "images/default_pfp.png"
     }
 ];
 

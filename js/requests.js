@@ -17,8 +17,10 @@ function renderServiceRequests(requests) {
             <p><strong>Customer:</strong> ${request.customerName}</p>
             <p><strong>Task:</strong> ${request.task}</p>
             <p><strong>Technician:</strong> ${request.techName}</p>
-            <button onclick="acceptRequest('${request.id}')">Accept</button>
-            <button onclick="rejectRequest('${request.id}')">Reject</button>
+            <div class="d-flex justify-content-right gap-2" style="margin-top:5%">
+            <button class="assign-task-btn" onclick="acceptRequest('${request.id}')">Accept</button>
+            <button class="assign-task-btn" onclick="rejectRequest('${request.id}')">Reject</button>
+            </div>
         `;
         requestList.appendChild(requestCard);
     });

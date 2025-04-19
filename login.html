@@ -36,6 +36,7 @@
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#services">Services</a></li>
           <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="view-profile.html">Profile</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -54,11 +55,10 @@
           <form id="loginForm" onsubmit="return false;">
             <div class="form-group" style="margin-top: 10%;">
               <!-- Email input -->
-              <input type="email" class="form-control" id="loginEmail" placeholder="Email"
-                required>
+              <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10%;">
-              
+
             </div>
             <div class="form-group" style="margin-top: 10%;">
               <!-- Password input -->
@@ -66,7 +66,7 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10%;">
               <!-- Button to submit -->
-              <button class="button-format" type="submit" >
+              <button class="button-format" type="submit">
                 Log In
               </button>
             </div>
@@ -138,7 +138,7 @@
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
-  
+
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
@@ -150,7 +150,7 @@
       appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
       measurementId: "G-E2BJQZQWGD"
     };
-  
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
@@ -158,24 +158,24 @@
 
 
     //Login function 
-  const loginForm = document.getElementById("loginForm");
+    const loginForm = document.getElementById("loginForm");
 
-  loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        alert("Login successful!");
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert("Error: " + error.message);
-      });
-  });
-</script>
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("Login successful!");
+          window.location.href = "index.html";
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+        });
+    });
+  </script>
 
 
 </body>

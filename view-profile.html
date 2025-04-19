@@ -124,7 +124,7 @@
 
         .container {
             padding: 20px;
-            
+
         }
 
         .history-title {
@@ -150,6 +150,60 @@
 
         .request-card p {
             margin: 5px 0;
+        }
+
+        .history-card {
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px 20px;
+            background-color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            color: navy;
+        }
+
+        .history-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #fafafa;
+            padding: 0 20px;
+        }
+
+        .history-content.open {
+            padding: 20px;
+            max-height: fit-content;
+        }
+
+        .task-card {
+            background: #f4f4f4;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .assign-task-btn {
+            background-color: #56a2ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 5%;
+            max-width: fit-content;
+        }
+
+        .assign-task-btn:hover {
+            background-color: darkblue;
         }
     </style>
 
@@ -206,13 +260,64 @@
             <a href="edit-profile.html"><span>Edit Profile</span><i class="bi bi-arrow-right"></i></a>
         </div>
         <!-- End of Profile Info -->
-
-        <div class="container">
-            <h1 class="history-title">Customer History</h1>
-            <div id="customerHistory" class="history-list">
-                <!-- Customer request history will be populated here -->
+        <section id="customerSection" style="display: none;">
+            <div id="faq" class="faq section">
+                <div class="container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="history-card">
+                        <div class="history-header" onclick="toggleHistory()">
+                            <h1 class="history-title"><span>Customer History</span></h1>
+                            <i id="arrowIcon" class="faq-toggle bi bi-chevron-right"></i>
+                        </div>
+                        <div class="history-content" id="historyContent">
+                            <div id="customerHistory" class="history-list">
+                                <!-- Customer request history will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section id="technicianSection" style="display: none;">
+            <div class="d-flex justify-content-center">
+                <button onclick="window.location.href='requests.html';" class="assign-task-btn">View Available
+                    Requests</button>
+            </div>
+        </section>
+
+        <script>// Set this dynamically based on your logged-in user!
+            const userRole = "technician";  // change to "technician" to test!
+
+            function showRelevantSection(role) {
+                const customerSection = document.getElementById('customerSection');
+                const technicianSection = document.getElementById('technicianSection');
+
+                if (role === "customer") {
+                    customerSection.style.display = "block";
+                    technicianSection.style.display = "none";
+                } else if (role === "technician") {
+                    customerSection.style.display = "none";
+                    technicianSection.style.display = "block";
+                }
+            }
+
+            showRelevantSection(userRole);
+        </script>
+
+        <script>
+            function toggleHistory() {
+                const content = document.getElementById('historyContent');
+                const icon = document.getElementById('arrowIcon');
+
+                if (content.classList.contains('open')) {
+                    content.classList.remove('open');
+                    icon.className = "faq-toggle bi bi-chevron-right";
+                } else {
+                    content.classList.add('open');
+                    icon.className = "faq-toggle bi bi-chevron-down";
+                }
+            }
+        </script>
 
         <script>
             // Function to fetch and display customer history
@@ -279,7 +384,7 @@
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/script3.js"></script>
-    <script src="script4.js"></script>
+    <script src="js/script4.js"></script>
     <script src="js/script2.js"></script>
 
 

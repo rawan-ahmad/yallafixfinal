@@ -6,8 +6,8 @@ app.use(express.json());
 app.use(cors());
 
 const users = {
-    1: { id: 1, name: "John Doe", role: "technician", email: "john@example.com", phone: "123-456-7890", extraInfo: "Certified electrician", pic: "default_pfp.png" },
-    2: { id: 2, name: "Jane Smith", role: "client", email: "jane@example.com", phone: "987-654-3210", extraInfo: "Regular customer", pic: "default_pfp.png"  }
+    1: { id: 1, name: "John Doe", role: "technician", email: "john@example.com", phone: "123-456-7890", extraInfo: "Certified electrician", pic: "images/default_pfp.png" },
+    2: { id: 2, name: "Jane Smith", role: "client", email: "jane@example.com", phone: "987-654-3210", extraInfo: "Regular customer", pic: "images/default_pfp.png"  }
 };
 
 app.get("/profile/:id", (req, res) => {
