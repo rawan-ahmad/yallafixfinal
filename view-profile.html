@@ -205,6 +205,20 @@
         .assign-task-btn:hover {
             background-color: darkblue;
         }
+
+        .success {
+            background-color: #5fe27d;
+            width: min-content;
+        }
+
+        .danger {
+            background-color: #e15555;
+            width: min-content;
+        }
+
+        .availability-toggle {
+            font-size: 200%;
+        }
     </style>
 
     <title>YallaFix - Profile Management</title>
@@ -222,6 +236,8 @@
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
+                    <li id="technicianSection1" style="display: none;"><a href="requests.html">Service Requests</a></li>
+                  
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -254,7 +270,7 @@
         <!-- End Page Title -->
 
         <!-- Profile Info -->
-        <div class="container profile-container" style="margin-top: 6%; margin-bottom: 6%;">
+        <div class="container profile-container" style="margin-top: 6%; margin-bottom: 2%;">
             <h2>Profile Information</h2>
             <div id="profile"></div>
             <a href="edit-profile.html"><span>Edit Profile</span><i class="bi bi-arrow-right"></i></a>
@@ -280,24 +296,50 @@
 
         <section id="technicianSection" style="display: none;">
             <div class="d-flex justify-content-center">
-                <button onclick="window.location.href='requests.html';" class="assign-task-btn">View Available
-                    Requests</button>
+                <button id="availabilityBtn" class="success availability-toggle">
+                    Available
+                </button>
             </div>
         </section>
 
-        <script>// Set this dynamically based on your logged-in user!
+        <script>
+
+            const availabilityBtn = document.getElementById('availabilityBtn');
+            let isAvailable = true;
+
+            availabilityBtn.addEventListener('click', () => {
+                isAvailable = !isAvailable;
+                if (isAvailable) {
+                    availabilityBtn.textContent = "Available";
+                    availabilityBtn.classList.remove('danger');
+                    availabilityBtn.classList.add('success');
+                } else {
+                    availabilityBtn.textContent = "Unavailable";
+                    availabilityBtn.classList.remove('success');
+                    availabilityBtn.classList.add('danger');
+                }
+
+                // Optional: show toast
+                showToast(`Status set to: ${availabilityBtn.textContent}`);
+            });
+
+
+            // Set this dynamically based on your logged-in user!
             const userRole = "technician";  // change to "technician" to test!
 
             function showRelevantSection(role) {
                 const customerSection = document.getElementById('customerSection');
                 const technicianSection = document.getElementById('technicianSection');
+                const technicianSection1 = document.getElementById('technicianSection1');
 
                 if (role === "customer") {
                     customerSection.style.display = "block";
                     technicianSection.style.display = "none";
+                    technicianSection1.style.display = "none";
                 } else if (role === "technician") {
                     customerSection.style.display = "none";
                     technicianSection.style.display = "block";
+                    technicianSection1.style.display = "block";
                 }
             }
 

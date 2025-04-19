@@ -140,6 +140,27 @@
         .start-service-btn:hover {
             background-color: #4ff676f9;
         }
+
+        .custom-toast {
+            position: fixed;
+            bottom: 5%;
+            left: 5%;
+            align-content: center;
+            background: #ffffffed;
+            border-radius: 5%;
+            color: #1e2a78;
+            padding: 12px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.268);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: 1000;
+        }
+
+        .custom-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 
     <title>YallaFix - Finding a Tech</title>
@@ -201,6 +222,13 @@
             </div>
         </div>
         <!-- End of Technician list -->
+
+        <div id="myToast" class="custom-toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="toast-body"></div>
+                <button type="button" class="btn-close ms-3" aria-label="Close"></button>
+            </div>
+        </div>        
 
     </main>
 

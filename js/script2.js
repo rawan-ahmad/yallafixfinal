@@ -105,10 +105,10 @@ function displayTechnicians() {
             });
 
             if (response.ok) {
-                alert(`Request sent to ${technician.name}`);
+                showToast(`Request sent to ${technician.name}`);
                 contactBtnsContainer.style.display = "none";
             } else {
-                alert("Failed to send request. Please try again.");
+                showToast("Failed to send request. Please try again.");
             }
 
             loadCustomerHistory();
@@ -125,3 +125,16 @@ function displayTechnicians() {
         technicianList.appendChild(techDiv);
     });
 }
+
+function showToast(message) {
+    const toastEl = document.getElementById('myToast');
+    const toastBody = toastEl.querySelector('.toast-body');
+    toastBody.textContent = message;
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+}
+document.querySelector('#myToast .btn-close').addEventListener('click', () => {
+    document.getElementById('myToast').classList.remove('show');
+});
+
+
