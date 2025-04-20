@@ -1,4 +1,4 @@
-/*const express = require("express");
+const express = require("express");
 const cors = require("cors");
 
 const app = express();
@@ -31,7 +31,7 @@ app.get("/api/message", (req, res) => {
 
 
 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -45,7 +45,7 @@ db.connect(error => {
   console.log("Successfully connected to the database.");
 });
 
-db.query('SELECT * FROM users', (error, results, fields) => {
+db.query('SELECT * FROM user', (error, results, fields) => {
   if (error) throw error;
   console.log(results);
 });
@@ -328,4 +328,3 @@ app.get("/findTechnicians", async (req, res) => {
 
 
 
-db.end(); */
