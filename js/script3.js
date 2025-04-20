@@ -162,5 +162,16 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   });
 
   const result = await res.json();
-  alert(result.message);
+  showToast(result.message);
+});
+
+function showToast(message) {
+  const toastEl = document.getElementById('myToast');
+  const toastBody = toastEl.querySelector('.toast-body');
+  toastBody.textContent = message;
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
+document.querySelector('#myToast .btn-close').addEventListener('click', () => {
+  document.getElementById('myToast').classList.remove('show');
 });

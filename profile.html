@@ -22,6 +22,7 @@
         }
 
         input[type="text"],
+        input[type="password"],
         select {
             width: 50%;
             padding: 5px;
@@ -210,14 +211,17 @@
                     <input type="text" id="signupEmail" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="field">
-                    <label for="password">Password</label>
-                    <input type="text" id="signupPassword" name="password" placeholder="Create a Strong password"
+                    <label for="password">Password&nbsp;&nbsp;</label>
+                    <i class="bi bi-eye-slash" id="togglePassword1" style="cursor: pointer;"></i>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password"
                         required>
                 </div>
                 <div class="field">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
+                    <label for="confirmPassword">Confirm Password&nbsp;&nbsp;</label>
+                    <i class="bi bi-eye-slash" id="togglePassword2" style="cursor: pointer;"></i>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Rewrite password"
                         required>
+                    
                 </div>
                 <div class="field">
                     <label for="location">Location</label>
@@ -278,6 +282,13 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
+
+        <div id="myToast" class="custom-toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="toast-body"></div>
+                <button type="button" class="btn-close ms-3" aria-label="Close"></button>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -309,6 +320,31 @@
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/script3.js"></script>
+    <script src="js/script2.js"></script>
+
+    <script>
+         const passwordInput1 = document.getElementById('signupPassword');
+        const togglePassword1 = document.getElementById('togglePassword1');
+        togglePassword1.addEventListener('click', function () {
+            const type1 = passwordInput1.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput1.setAttribute('type', type1);
+
+            // Swap the icon class
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+
+        const passwordInput2 = document.getElementById('confirmPassword');
+        const togglePassword2 = document.getElementById('togglePassword2');
+        togglePassword2.addEventListener('click', function () {
+            const type2 = passwordInput2.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput2.setAttribute('type', type2);
+
+            // Swap the icon class
+            this.classList.toggle('bi-eye');
+            this.classList.toggle('bi-eye-slash');
+        });
+    </script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
@@ -338,7 +374,7 @@
             const confirmPassword = document.getElementById("confirmPassword").value;
 
             if (password !== confirmPassword) {
-                alert("Passwords do not match!");
+                showToast("Passwords do not match!");
                 return;
             }
 
@@ -382,12 +418,23 @@
                     services
                 })
                 });
-                    alert("Signup successful!");
+                    showToast("Signup successful!");
                     window.location.href = "index.html";
                 })
                 .catch((error) => {
-                    alert("Error: " + error.message);
+                    showToast("Error: " + error.message);
                 });
+        });
+
+        function showToast(message) {
+            const toastEl = document.getElementById('myToast');
+            const toastBody = toastEl.querySelector('.toast-body');
+            toastBody.textContent = message;
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+        document.querySelector('#myToast .btn-close').addEventListener('click', () => {
+            document.getElementById('myToast').classList.remove('show');
         });
     </script>
 </body>

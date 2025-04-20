@@ -128,3 +128,14 @@ const handleChatKey = async (event) => {
     }
   }
 };
+
+function showToast(message) {
+  const toastEl = document.getElementById('myToast');
+  const toastBody = toastEl.querySelector('.toast-body');
+  toastBody.textContent = message;
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
+document.querySelector('#myToast .btn-close').addEventListener('click', () => {
+  document.getElementById('myToast').classList.remove('show');
+});

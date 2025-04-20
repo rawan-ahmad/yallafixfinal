@@ -1044,3 +1044,23 @@ body.chatbot-active #page-content {
   }
 }
 
+.custom-toast {
+  position: fixed;
+  bottom: 5%;
+  left: 5%;
+  align-content: center;
+  background: #ffffffed;
+  border-radius: 5%;
+  color: #1e2a78;
+  padding: 12px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.268);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+
+.custom-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
