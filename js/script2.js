@@ -1,3 +1,4 @@
+/*
 const technicians = [
     {
         name: "Ali Hassan",
@@ -32,15 +33,50 @@ const technicians = [
         profilePic: "images/default_pfp.png"
     }
 ];
+*/
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+      
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
+            authDomain: "yallafix-8586f.firebaseapp.com",
+            projectId: "yallafix-8586f",
+            storageBucket: "yallafix-8586f.firebasestorage.app",
+            messagingSenderId: "68556947912",
+            appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
+            measurementId: "G-E2BJQZQWGD"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+      
+        const service = localStorage.getItem("selectedService");
 
-displayTechnicians();
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const uid = user.uid;
+                try {
+                    const res = await fetch(`http://localhost:5501/findTechnicians?uid=${uid}&service=${encodeURIComponent(service)}`);
+                    if (!res.ok) throw new Error("Failed to fetch technicians");
+                    const technicians = await res.json();
+                    displayTechnicians(technicians);
+                } catch (err) {
+                    console.error("Error loading technicians:", err);
+                    showToast("Failed to load technicians.");
+                }
+            } else {
+                showToast("You must be logged in to find a technician.");
+                window.location.href = "login.html";
+            }
+        });
 
-function displayTechnicians() {
+function displayTechnicians(technicians) {
     const technicianList = document.getElementById("technicianList");
     technicianList.innerHTML = "";
 
     technicians.forEach(technician => {
+        const priceRange = formatPriceRange(technician.min_price, technician.max_price);
         const techDiv = document.createElement("div");
         techDiv.className = "technician-card";
         techDiv.innerHTML = `
@@ -51,7 +87,7 @@ function displayTechnicians() {
                     <p><strong>${technician.task}</strong></p>
                     <p><strong>Phone:</strong> ${technician.phone}</p>
                     <p><strong>Experience:</strong> ${technician.experience}</p>
-                    <p><strong>Price:</strong> ${technician.priceRange}</p>
+                    <p><strong>Price:</strong> ${priceRange}</p>
                 </div>
             </div>
             <div class="contact-buttons" style="display: none;">
@@ -124,6 +160,17 @@ function displayTechnicians() {
 
         technicianList.appendChild(techDiv);
     });
+}
+
+function formatPriceRange(min, max) {
+    const minInt = parseInt(min);
+    const maxInt = parseInt(max);
+    if (isNaN(minInt) || isNaN(maxInt)) return "$";
+    const avg = (minInt + maxInt) / 2;
+    if (avg < 50) return "$";
+    if (avg < 150) return "$$";
+    if (avg < 300) return "$$$";
+    return "$$$$";
 }
 
 function showToast(message) {

@@ -44,12 +44,12 @@ db.connect(error => {
   if (error) throw error;
   console.log("Successfully connected to the database.");
 });
-
+/*
 db.query('SELECT * FROM user', (error, results, fields) => {
   if (error) throw error;
   console.log(results);
 });
-
+*/
 app.post('/api/saveUser', (req, res) => {
     const {
       uid,
@@ -309,7 +309,7 @@ app.get("/findTechnicians", async (req, res) => {
 
     const [techs] = await db.promise().query(
       `
-      SELECT u.name, u.phone_number AS phone, u.location, t.expertise_level, t.min_price, t.max_price, te.expertise AS task
+      SELECT u.name, u.phone_number AS phone, u.location, t.expertise_level AS experience, t.min_price, t.max_price, te.expertise AS task
       FROM User u
       JOIN Technician t ON u.firebase_uid = t.firebase_uid
       JOIN Technician_Expertise te ON t.firebase_uid = te.firebase_uid
