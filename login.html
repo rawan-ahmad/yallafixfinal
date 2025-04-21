@@ -195,6 +195,18 @@
     });
   </script>
 
+<script type="module">
+  import { loginUser } from './js/loginHandler.js';
+
+  document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const result = await loginUser(email, password);
+    alert(result); // Or show it as a message
+  });
+</script>
 
 </body>
 

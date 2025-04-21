@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,5 +26,9 @@
     "mysql2": "^3.14.0",
     "openai": "^4.92.0",
     "twilio": "^5.4.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   }
 }
