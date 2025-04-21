@@ -211,6 +211,10 @@
                     <input type="text" id="signupEmail" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="field">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phoneNumber" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="field">
                     <label for="password">Password&nbsp;&nbsp;</label>
                     <i class="bi bi-eye-slash" id="togglePassword1" style="cursor: pointer;"></i>
                     <input type="password" id="signupPassword" name="password" placeholder="Create a Strong password"
@@ -386,7 +390,7 @@
                 const firstName = document.getElementById("firstName").value.trim();
                 const lastName = document.getElementById("lastName").value.trim();
                 const fullName = `${firstName} ${lastName}`;
-                const phone = ""; // add if there's a phone field
+                const phone = document.getElementById("phoneNumber").value.trim();
                 const email = document.getElementById("signupEmail").value;
                 const location = document.getElementById("location").value;
                 const role = document.getElementById("role").value;

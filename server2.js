@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const users = {
+/*const users = {
     1: { id: 1, name: "John Doe", role: "technician", email: "john@example.com", phone: "123-456-7890", extraInfo: "Certified electrician", pic: "default_pfp.png" },
     2: { id: 2, name: "Jane Smith", role: "client", email: "jane@example.com", phone: "987-654-3210", extraInfo: "Regular customer", pic: "default_pfp.png"  }
 };
@@ -19,7 +19,7 @@ app.get("/profile/:id", (req, res) => {
     }
 
     res.json(user);
-});
+});*/
 
 const PORT = process.env.PORT || 5501;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
@@ -70,10 +70,10 @@ app.post('/api/saveUser', (req, res) => {
   
     // Insert into user table
     const userSql = `
-      INSERT INTO User (firebase_uid, name, phone_number, location, is_technician, created_at)
-      VALUES (?, ?, ?, ?, ?, NOW())
+      INSERT INTO User (firebase_uid, name, email, phone_number, location, is_technician, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, NOW())
     `;
-    db.query(userSql, [uid, name, phone || null, location, isTechnician ? 1 : 0], (err) => {
+    db.query(userSql, [uid, name, email, phone || null, location, isTechnician ? 1 : 0], (err) => {
       if (err) {
         console.error('Error inserting into User:', err);
         return res.status(500).send('Error inserting user');
@@ -137,10 +137,10 @@ app.post('/api/saveUser', (req, res) => {
             const expertiseQuery = `SELECT expertise FROM Technician_Expertise WHERE firebase_uid = ?`;
 
             db.query(techQuery, [uid], (err, techResult) => {
-                if (err) return res.status(500).json({ error: "Database error" });
+                if (err) return res.status(500).json({ error: "Database error (Technician)" });
 
                 db.query(expertiseQuery, [uid], (err, expertiseResult) => {
-                    if (err) return res.status(500).json({ error: "Database error" });
+                    if (err) return res.status(500).json({ error: "Database error (Expertise)" });
 
                     const expertise = expertiseResult.map(row => row.expertise);
                     res.json({

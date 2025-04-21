@@ -426,7 +426,7 @@
     <script src="vendor/glightbox/js/glightbox.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/script3.js"></script>
-    <script src="js/script4.js"></script>
+    <!--<script src="js/script4.js"></script>-->
     <script src="js/script2.js"></script>
 
 
@@ -487,7 +487,70 @@
             }
         });
     </script> -->
+     
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZlaYBlGK1pT6ug_4JfLYNE3uLEuh7U7o",
+            authDomain: "yallafix-8586f.firebaseapp.com",
+            projectId: "yallafix-8586f",
+            storageBucket: "yallafix-8586f.appspot.com",
+            messagingSenderId: "68556947912",
+            appId: "1:68556947912:web:8d07a7c75d1652f81d00fd",
+            measurementId: "G-E2BJQZQWGD"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                const uid = user.uid;
+    
+                fetch(`http://localhost:5501/profile/${uid}`)
+                    .then(res => res.json())
+                    .then(user => {
+                        const profileDiv = document.getElementById("profile");
+    
+                        if (!user || user.error) {
+                            profileDiv.innerHTML = "<p>User not found</p>";
+                            return;
+                        }
+    
+                        const profilePicUrl = user.pic || "images/default_pfp.png";
+                        let profileHTML = `
+                            <div>
+                                <img src="${profilePicUrl}" alt="Profile Picture" class="profile-pic">
+                            </div>
+                            <p><strong>Name:</strong> ${user.name}</p>
+                            <p><strong>Email:</strong> ${user.email}</p>
+                            <p><strong>Phone:</strong> ${user.phone_number || 'N/A'}</p>
+                            <p><strong>Location:</strong> ${user.location || 'N/A'}</p>
+                            <p><strong>Role:</strong> ${user.is_technician ? 'Technician' : 'Service Seeker'}</p>
+                        `;
+    
+                        if (user.is_technician) {
+                            profileHTML += `
+                                <p><strong>Expertise Level:</strong> ${user.expertise_level}</p>
+                                <p><strong>Price Range:</strong> $${user.min_price} - $${user.max_price}</p>
+                                <p><strong>Services:</strong> ${user.expertise.join(", ")}</p>
+                            `;
+                        }
+    
+                        profileDiv.innerHTML = profileHTML;
+                    })
+                    .catch(err => {
+                        console.error("Error fetching profile:", err);
+                    });
+            } else {
+                alert("You are not logged in.");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
 
 </body>
 
