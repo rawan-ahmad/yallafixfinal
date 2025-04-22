@@ -364,7 +364,7 @@
         <script>
             // Function to fetch and display customer history
             async function loadCustomerHistory() {
-                const response = await fetch('http://localhost:3000/api/customer-history');
+                const response = await fetch('http://localhost:5501/api/customer-history');
                 const history = await response.json();
                 renderCustomerHistory(history);
             }

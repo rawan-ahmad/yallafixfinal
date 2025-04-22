@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const path = require('path');
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -347,3 +347,114 @@ app.post('/api/create_appointment', async (req, res) => {
       res.status(200).send("Appointment created successfully");
   });
 });
+
+// Storage config
+/*
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage });
+
+app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
+
+app.post('/upload', upload.single('profilePic'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
+  res.json({ message: 'Upload successful', filename: req.file.filename });
+});
+*/
+let serviceRequests = [
+  { id: '1', customerName: 'John Doe', task: 'Appliance Installation', techName: 'Hassan Aleme', status: 'Pending' },
+  { id: '2', customerName: 'Mahmoud Jebeily', task: 'Door Cabinet Repair', techName: 'Hassan Aleme', status: 'Pending' }
+];
+
+let technicianHistory = [];
+let customerHistory = [];
+
+// Endpoint to get all service requests
+app.get('/api/service-requests', (req, res) => {
+  res.json(serviceRequests.filter(req => req.status === 'Pending'));
+});
+
+// Endpoint to accept a service request
+app.post('/api/service-requests/:id/accept', (req, res) => {
+  const id = req.params.id;
+  const request = serviceRequests.find(r => r.id === id);
+
+  if (request) {
+      request.status = 'Accepted';
+      technicianHistory.push(request);
+      customerHistory.push(request);
+      res.json({ message: 'Request accepted' });
+  } else {
+      res.status(404).json({ message: 'Request not found' });
+  }
+});
+
+// Endpoint to reject a service request
+app.post('/api/service-requests/:id/reject', (req, res) => {
+  const id = req.params.id;
+  const request = serviceRequests.find(r => r.id === id);
+
+  if (request) {
+      request.status = 'Rejected';
+      res.json({ message: 'Request rejected' });
+  } else {
+      res.status(404).json({ message: 'Request not found' });
+  }
+});
+
+// Endpoint to get technician history
+app.get('/api/technician-history', (req, res) => {
+  res.json(technicianHistory);
+});
+
+// Endpoint to get customer history
+app.get('/api/customer-history', (req, res) => {
+  res.json(customerHistory);
+});
+
+// Endpoint to create a new service request
+app.post('/api/service-requests', (req, res) => {
+const { id, customerName, task, techName, status } = req.body;
+
+const newRequest = { id, customerName, task, techName, status };
+serviceRequests.push(newRequest);
+
+res.status(201).json({ message: 'Request created successfully', request: newRequest });
+});
+/*
+require('dotenv').config();
+const OpenAI = require("openai");
+const { Server } = require('http');
+
+app.use(bodyParser.json());
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+app.post('/chatbot', async (req, res) => {
+  const userMessage = req.body.message;
+
+  try {
+    const chatCompletion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: userMessage }],
+    });
+
+    const reply = chatCompletion.choices[0].message.content;
+    res.json({ reply });
+  } catch (error) {
+    console.error("Chatbot error:", error);
+    res.status(500).json({ reply: "Oops! GPT couldn't respond." });
+  }
+});*/

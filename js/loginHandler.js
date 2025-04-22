@@ -4,7 +4,7 @@ async function loginUser(email, password) {
     if (!email || !password) return "Please fill in all fields";
   
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
+      const res = await fetch("http://localhost:5501/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

@@ -1,6 +1,6 @@
 // Function to fetch and display service requests
 async function loadServiceRequests() {
-    const response = await fetch('http://localhost:3000/api/service-requests');
+    const response = await fetch('http://localhost:5501/api/service-requests');
     const requests = await response.json();
     renderServiceRequests(requests);
 }
@@ -28,13 +28,13 @@ function renderServiceRequests(requests) {
 
 // Function to accept a request
 async function acceptRequest(id) {
-    await fetch(`http://localhost:3000/api/service-requests/${id}/accept`, { method: 'POST' });
+    await fetch(`http://localhost:5501/api/service-requests/${id}/accept`, { method: 'POST' });
     loadServiceRequests();
 }
 
 // Function to reject a request
 async function rejectRequest(id) {
-    await fetch(`http://localhost:3000/api/service-requests/${id}/reject`, { method: 'POST' });
+    await fetch(`http://localhost:5501/api/service-requests/${id}/reject`, { method: 'POST' });
     loadServiceRequests();
 }
 
