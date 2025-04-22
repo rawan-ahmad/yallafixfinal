@@ -81,7 +81,7 @@ function displayTechnicians(technicians) {
         techDiv.className = "technician-card";
         techDiv.innerHTML = `
             <div class="card-content">
-                <img src="${technician.profilePic || 'https://via.placeholder.com/120'}" alt="${technician.name}" class="technician-img" />
+                <img src="${technician.profile_picture || 'images/default_pfp.png'}" alt="${technician.name}" class="technician-img" />
                 <div class="technician-info">
                     <h3>${technician.name}</h3>
                     <p><strong>${technician.task}</strong></p>
