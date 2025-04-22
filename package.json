@@ -31,5 +31,8 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^26.1.0"
-  }
+  },"scripts": {
+  "start": "node server2.js"
+}
+
 }
