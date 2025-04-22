@@ -156,7 +156,7 @@ app.post('/api/saveUser', (req, res) => {
     });
 });
 
-app.post('/update-profile', async (req, res) => {
+app.put('/api/update-profile', async (req, res) => {
   const {
     firebase_uid: uid,
     location,
@@ -309,7 +309,7 @@ app.get("/findTechnicians", async (req, res) => {
 
     const [techs] = await db.promise().query(
       `
-      SELECT u.name, u.phone_number AS phone, u.location, t.expertise_level AS experience, t.min_price, t.max_price, te.expertise AS task
+      SELECT u.firebase_uid, u.name, u.phone_number AS phone, u.location, t.expertise_level AS experience, t.min_price, t.max_price, te.expertise AS task
       FROM User u
       JOIN Technician t ON u.firebase_uid = t.firebase_uid
       JOIN Technician_Expertise te ON t.firebase_uid = te.firebase_uid
@@ -325,6 +325,25 @@ app.get("/findTechnicians", async (req, res) => {
   }
 });
 
+app.post('/api/create_appointment', async (req, res) => {
+  const { DateAndTime, Status, CustomerID, TechnicianID, Service } = req.body;
 
+  // Validate the incoming data
+  if (!DateAndTime || !Status || !CustomerID || !TechnicianID || !Service) {
+      return res.status(400).send("Missing required fields");
+  }
 
+  // Prepare SQL query to insert appointment into the database
+  const sql = `INSERT INTO appointment (DateAndTime, Status, CustomerID, TechnicianID, Service, CreatedAt, UpdatedAt)
+               VALUES (?, ?, ?, ?, ?, NOW(), NOW())`;
 
+  // Execute the query
+  db.query(sql, [DateAndTime, Status, CustomerID, TechnicianID, Service], (err, result) => {
+      if (err) {
+          console.error("Error inserting appointment:", err);
+          return res.status(500).send("Error creating appointment");
+      }
+
+      res.status(200).send("Appointment created successfully");
+  });
+});

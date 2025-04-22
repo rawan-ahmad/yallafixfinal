@@ -124,7 +124,44 @@ function displayTechnicians(technicians) {
             const customerName = "John Doe"; // Replace with dynamic customer name if available
             const task = technician.task;
             const techName = technician.name;
+            const techID = technician.firebase_uid;
 
+            const user = auth.currentUser; // Get the current user
+            if (!user) {
+                showToast("You must be logged in to request a service.");
+                return;
+            }
+            const customerID = user.uid; // Firebase UID of the current user (customer)
+
+            const now = new Date();
+
+            // Create the new appointment object
+            const newAppointment = {
+                DateAndTime: toMySQLDatetime(now),
+                Status: "Pending",
+                CustomerID: customerID,
+                TechnicianID: techID,
+                Service: task,
+            };
+
+            try {
+                const response = await fetch('http://localhost:5501/api/create_appointment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newAppointment),
+                });
+
+                if (response.ok) {
+                    showToast(`Request sent to ${technician.name}`);
+                    contactBtnsContainer.style.display = "none";
+                } else {
+                    showToast("Failed to send request. Please try again.");
+                }
+                } catch (err) {
+                    console.error("Error sending appointment request:", err);
+                    showToast("Failed to send request. Please try again.");
+                }
+            
             const newRequest = {
                 id: Date.now().toString(),
                 customerName,
@@ -146,9 +183,12 @@ function displayTechnicians(technicians) {
             } else {
                 showToast("Failed to send request. Please try again.");
             }
+            
 
-            loadCustomerHistory();
+
+            loadCustomerHistory(); 
             loadTechHistory();
+            
         });
 
 
@@ -171,6 +211,12 @@ function formatPriceRange(min, max) {
     if (avg < 150) return "$$";
     if (avg < 300) return "$$$";
     return "$$$$";
+}
+
+function toMySQLDatetime(date) {
+    const pad = n => n < 10 ? '0' + n : n;
+    return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())} ` +
+           `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
 }
 
 function showToast(message) {
